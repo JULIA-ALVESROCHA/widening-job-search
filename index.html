@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skill Intelligence — Demo Deck</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;background:#0a1e26;overflow:hidden;font-family:"Georgia","Times New Roman",serif;}
+
+#stage{position:relative;width:100vw;height:100vh;}
+
+.slide{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  justify-content:center;padding:5vh 7vw;
+  opacity:0;transform:translateY(24px);pointer-events:none;
+  transition:opacity .55s cubic-bezier(.4,0,.2,1),transform .55s cubic-bezier(.4,0,.2,1);
+}
+.slide.active{opacity:1;transform:none;pointer-events:auto;}
+
+.kicker{
+  font-family:"Helvetica Neue",Arial,sans-serif;
+  letter-spacing:.28em;text-transform:uppercase;font-size:.72rem;
+  color:#00C0CA;margin-bottom:.9rem;font-weight:700;
+}
+h1{
+  font-size:clamp(1.4rem,2.7vw,2.7rem);line-height:1.14;font-weight:400;
+  color:#EAF6F6;margin-bottom:.4rem;max-width:60rem;
+}
+.cover h1{font-size:clamp(1.9rem,4vw,4rem);}
+.hl{color:#00C0CA;}
+.sub{
+  font-family:"Helvetica Neue",Arial,sans-serif;color:#7FA6AE;
+  font-size:.88rem;margin-bottom:1.4rem;max-width:48rem;line-height:1.55;
+}
+.chartwrap{position:relative;flex:1;min-height:0;width:100%;}
+canvas.chart{position:absolute;inset:0;width:100%!important;height:100%!important;}
+
+.legend{
+  font-family:"Helvetica Neue",Arial,sans-serif;display:flex;gap:18px;
+  margin-top:10px;font-size:.82rem;color:#7FA6AE;flex-shrink:0;
+}
+.legend span{display:flex;align-items:center;gap:7px;}
+.swatch{width:12px;height:12px;border-radius:2px;flex-shrink:0;}
+
+.callout{
+  position:absolute;font-family:"Helvetica Neue",Arial,sans-serif;
+  background:rgba(255,255,255,.95);color:#0a1e26;font-weight:700;
+  border-radius:8px;padding:10px 14px;font-size:.82rem;line-height:1.35;
+  border:2px solid #00C0CA;max-width:200px;pointer-events:none;
+  opacity:0;transform:translateY(6px);
+  transition:opacity .4s ease,transform .4s ease;
+}
+.callout.show{opacity:1;transform:none;}
+
+/* chrome */
+#progbar{position:fixed;bottom:0;left:0;height:3px;background:#00C0CA;width:0;
+  transition:width .45s cubic-bezier(.4,0,.2,1);z-index:99;}
+.dots{position:fixed;bottom:18px;right:24px;display:flex;gap:8px;z-index:99;}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2);
+  cursor:pointer;transition:background .25s,transform .25s;}
+.dot.on{background:#00C0CA;transform:scale(1.4);}
+.ctrls{position:fixed;bottom:14px;left:24px;z-index:99;display:flex;gap:10px;}
+.ctrls button{
+  background:rgba(255,255,255,.08);color:#EAF6F6;
+  border:1px solid rgba(255,255,255,.14);border-radius:6px;
+  padding:5px 13px;cursor:pointer;font-size:.76rem;
+  font-family:"Helvetica Neue",Arial,sans-serif;transition:background .18s;
+}
+.ctrls button:hover{background:rgba(255,255,255,.17);}
+.badge{
+  position:fixed;top:14px;right:20px;z-index:99;
+  font-family:"Helvetica Neue",Arial,sans-serif;font-size:.62rem;
+  letter-spacing:.1em;text-transform:uppercase;color:#7FA6AE;
+  border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:4px 11px;
+}
+</style>
+</head>
+<body>
+<div class="badge">Demo · placeholder data</div>
+<div id="stage">
+
+  <section class="slide cover active" data-i="0">
+    <div class="kicker">Skill Intelligence Report</div>
+    <h1>The labor market is splitting:<br><span class="hl">technical skills are pulling away</span>.</h1>
+    <div class="sub">Six findings from 19.9M job postings · 26 skills tracked.<br>Demo deck — figures are placeholders pending the live data run.</div>
+  </section>
+
+  <section class="slide" data-i="1">
+    <div class="kicker">01 · The landscape</div>
+    <h1>Communication and Excel anchor the market — but technical skills are climbing.</h1>
+    <div class="chartwrap"><canvas id="c1" class="chart"></canvas></div>
+  </section>
+
+  <section class="slide" data-i="2">
+    <div class="kicker">02 · The trend</div>
+    <h1>Technical-skill demand is growing <span class="hl">~3× faster</span> than soft skills.</h1>
+    <div class="chartwrap">
+      <canvas id="c2" class="chart"></canvas>
+      <div class="callout" id="call2" style="top:30%;left:42%">Hard skills grew ≈3× faster than soft skills</div>
+    </div>
+    <div class="legend">
+      <span><i class="swatch" style="background:#00C0CA"></i>Hard skills</span>
+      <span><i class="swatch" style="background:#8FC440"></i>Soft skills</span>
+    </div>
+  </section>
+
+  <section class="slide" data-i="3">
+    <div class="kicker">03 · Who's hiring</div>
+    <h1>Entry-level demand outpaces senior — and the gap never closes.</h1>
+    <div class="chartwrap"><canvas id="c3" class="chart"></canvas></div>
+    <div class="legend">
+      <span><i class="swatch" style="background:#00C0CA"></i>Entry-level</span>
+      <span><i class="swatch" style="background:#3FA9B6"></i>Senior</span>
+    </div>
+  </section>
+
+  <section class="slide" data-i="4">
+    <div class="kicker">04 · Seniority</div>
+    <h1>Technical skills concentrate in senior roles; foundational skills in entry.</h1>
+    <div class="chartwrap"><canvas id="c4" class="chart"></canvas></div>
+    <div class="legend">
+      <span><i class="swatch" style="background:#3FA9B6"></i>Senior-leaning</span>
+      <span><i class="swatch" style="background:#8FC440"></i>Entry-leaning</span>
+    </div>
+  </section>
+
+  <section class="slide" data-i="5">
+    <div class="kicker">05 · The logic</div>
+    <h1>Every field has a signature skill — and it mirrors the work.</h1>
+    <div class="sub" style="margin-bottom:.5rem">Most over-represented specialist skill per field vs. average.</div>
+    <div class="chartwrap"><canvas id="c5" class="chart"></canvas></div>
+  </section>
+
+  <section class="slide" data-i="6">
+    <div class="kicker">06 · The money</div>
+    <h1>Soft-skill roles out-earn hard-skill-only roles — the premium is in the pairing.</h1>
+    <div class="chartwrap"><canvas id="c6" class="chart"></canvas></div>
+  </section>
+
+</div>
+
+<div id="progbar"></div>
+<div class="dots" id="dots"></div>
+<div class="ctrls">
+  <button onclick="prev()">‹ Prev</button>
+  <button id="playbtn" onclick="togglePlay()">⏸ Auto</button>
+  <button onclick="next()">Next ›</button>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════
+   UTILITIES
+═══════════════════════════════════════════ */
+const easeOut = t => 1 - Math.pow(1 - t, 3);
+const lerp = (a,b,t) => a + (b-a)*t;
+
+function tween(duration, onFrame, onDone) {
+  let raf, start;
+  function tick(ts) {
+    if (!start) start = ts;
+    const p = Math.min((ts - start) / duration, 1);
+    onFrame(easeOut(p));
+    if (p < 1) raf = requestAnimationFrame(tick);
+    else if (onDone) onDone();
+  }
+  raf = requestAnimationFrame(tick);
+  return () => cancelAnimationFrame(raf);
+}
+
+/* ═══════════════════════════════════════════
+   CANVAS CHART ENGINE
+   All drawing is manual — no library.
+   Each chart fn returns a "play" function
+   that restarts the entrance animation.
+═══════════════════════════════════════════ */
+
+const GRID  = 'rgba(255,255,255,.07)';
+const TICK  = '#7FA6AE';
+const LABEL_FONT = '12px "Helvetica Neue",Arial,sans-serif';
+const TITLE_FONT = '11px "Helvetica Neue",Arial,sans-serif';
+
+/* shared: size canvas to its container */
+function sizeCanvas(cv) {
+  const r = cv.parentElement.getBoundingClientRect();
+  cv.width  = r.width  * devicePixelRatio;
+  cv.height = r.height * devicePixelRatio;
+  cv.style.width  = r.width  + 'px';
+  cv.style.height = r.height + 'px';
+}
+
+/* ── horizontal bar (log or linear) ── */
+function makeHBar(id, labels, values, colors, opts={}) {
+  const cv = document.getElementById(id);
+  let cancel;
+
+  function play() {
+    if (cancel) cancel();
+    sizeCanvas(cv);
+    const ctx = cv.getContext('2d');
+    const dpr = devicePixelRatio;
+    ctx.scale(dpr, dpr);
+    const W = cv.width/dpr, H = cv.height/dpr;
+
+    const n = labels.length;
+    const padL = 148, padR = 60, padT = 14, padB = opts.xTitle ? 34 : 16;
+    const plotW = W - padL - padR;
+    const plotH = H - padT - padB;
+    const rowH  = plotH / n;
+
+    const useLog = !!opts.log;
+    const maxV = Math.max(...values);
+    const minV = 0;
+
+    function xScale(v) {
+      if (useLog) {
+        const logMin = Math.log10(0.01), logMax = Math.log10(100);
+        return padL + (Math.log10(Math.max(v,0.005)) - logMin) / (logMax - logMin) * plotW;
+      }
+      const domain = opts.xMax || maxV;
+      return padL + (v / domain) * plotW;
+    }
+
+    function drawStatic() {
+      ctx.clearRect(0, 0, W, H);
+      /* grid lines */
+      const ticks = useLog
+        ? [0.01,0.1,1,10,100]
+        : [0, maxV*0.25, maxV*0.5, maxV*0.75, maxV];
+      ctx.strokeStyle = GRID;
+      ctx.lineWidth = 1;
+      ticks.forEach(v => {
+        const x = xScale(v);
+        ctx.beginPath(); ctx.moveTo(x, padT); ctx.lineTo(x, padT+plotH); ctx.stroke();
+      });
+      /* tick labels */
+      ctx.fillStyle = TICK;
+      ctx.font = LABEL_FONT;
+      ctx.textAlign = 'center';
+      ticks.forEach(v => {
+        const x = xScale(v);
+        const label = useLog ? (v<1?v.toFixed(2):v) : (v>0?v.toFixed(1):'0');
+        ctx.fillText(label, x, padT+plotH+18);
+      });
+      /* x axis title */
+      if (opts.xTitle) {
+        ctx.fillStyle = TICK; ctx.font = TITLE_FONT; ctx.textAlign = 'center';
+        ctx.fillText(opts.xTitle, padL+plotW/2, H-4);
+      }
+      /* row labels */
+      ctx.fillStyle = '#EAF6F6'; ctx.font = LABEL_FONT; ctx.textAlign = 'right';
+      labels.forEach((lbl, i) => {
+        const y = padT + i*rowH + rowH/2 + 4;
+        ctx.fillText(lbl, padL-8, y);
+      });
+    }
+
+    cancel = tween(900, p => {
+      drawStatic();
+      /* bars */
+      values.forEach((v, i) => {
+        const x0 = xScale(0);
+        const x1 = lerp(x0, xScale(v), p);
+        const y  = padT + i*rowH + rowH*0.18;
+        const bh = rowH * 0.62;
+        ctx.fillStyle = colors[i] || '#00C0CA';
+        ctx.beginPath();
+        ctx.roundRect(x0, y, x1-x0, bh, 3);
+        ctx.fill();
+      });
+    });
+  }
+
+  return play;
+}
+
+/* ── diverging horizontal bar ── */
+function makeDivBar(id, labels, values, colorPos, colorNeg) {
+  const cv = document.getElementById(id);
+  let cancel;
+
+  function play() {
+    if (cancel) cancel();
+    sizeCanvas(cv);
+    const ctx = cv.getContext('2d');
+    const dpr = devicePixelRatio;
+    ctx.scale(dpr, dpr);
+    const W = cv.width/dpr, H = cv.height/dpr;
+
+    const n = labels.length;
+    const padL = 130, padR = 40, padT = 14, padB = 30;
+    const plotW = W - padL - padR;
+    const plotH = H - padT - padB;
+    const rowH  = plotH / n;
+    const absMax = 50;
+    const midX = padL + plotW/2;
+
+    function xScale(v) { return padL + (v + absMax) / (absMax*2) * plotW; }
+
+    function drawStatic() {
+      ctx.clearRect(0,0,W,H);
+      /* zero line */
+      ctx.strokeStyle = 'rgba(255,255,255,.25)'; ctx.lineWidth=1.5;
+      ctx.beginPath(); ctx.moveTo(midX,padT); ctx.lineTo(midX,padT+plotH); ctx.stroke();
+      /* grid */
+      [-40,-20,0,20,40].forEach(v => {
+        const x = xScale(v);
+        ctx.strokeStyle=GRID; ctx.lineWidth=1;
+        ctx.beginPath(); ctx.moveTo(x,padT); ctx.lineTo(x,padT+plotH); ctx.stroke();
+        ctx.fillStyle=TICK; ctx.font=LABEL_FONT; ctx.textAlign='center';
+        ctx.fillText(v, x, padT+plotH+16);
+      });
+      ctx.fillStyle=TICK; ctx.font=TITLE_FONT; ctx.textAlign='center';
+      ctx.fillText('← entry    |    senior →', padL+plotW/2, H-2);
+      /* labels */
+      ctx.fillStyle='#EAF6F6'; ctx.font=LABEL_FONT; ctx.textAlign='right';
+      labels.forEach((lbl,i) => {
+        ctx.fillText(lbl, padL-8, padT+i*rowH+rowH/2+4);
+      });
+    }
+
+    cancel = tween(950, p => {
+      drawStatic();
+      values.forEach((v,i) => {
+        const x0 = midX;
+        const x1 = lerp(x0, xScale(v), p);
+        const y  = padT + i*rowH + rowH*0.18;
+        const bh = rowH * 0.62;
+        ctx.fillStyle = v >= 0 ? colorPos : colorNeg;
+        ctx.beginPath();
+        if (v >= 0) ctx.roundRect(x0, y, x1-x0, bh, 3);
+        else        ctx.roundRect(x1, y, x0-x1, bh, 3);
+        ctx.fill();
+      });
+    });
+  }
+  return play;
+}
+
+/* ── vertical bar ── */
+function makeVBar(id, labels, values, colors) {
+  const cv = document.getElementById(id);
+  let cancel;
+
+  function play() {
+    if (cancel) cancel();
+    sizeCanvas(cv);
+    const ctx = cv.getContext('2d');
+    const dpr = devicePixelRatio;
+    ctx.scale(dpr, dpr);
+    const W = cv.width/dpr, H = cv.height/dpr;
+
+    const n = labels.length;
+    const padL=52, padR=20, padT=14, padB=48;
+    const plotW=W-padL-padR, plotH=H-padT-padB;
+    const colW=plotW/n;
+    const maxV=Math.max(...values)*1.1;
+
+    function yScale(v) { return padT+plotH - (v/maxV)*plotH; }
+
+    function drawStatic() {
+      ctx.clearRect(0,0,W,H);
+      [0,20,40,60].forEach(v => {
+        if (v>maxV) return;
+        const y=yScale(v);
+        ctx.strokeStyle=GRID; ctx.lineWidth=1;
+        ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(padL+plotW,y); ctx.stroke();
+        ctx.fillStyle=TICK; ctx.font=LABEL_FONT; ctx.textAlign='right';
+        ctx.fillText('$'+v+'K', padL-6, y+4);
+      });
+      ctx.fillStyle='#EAF6F6'; ctx.font=LABEL_FONT; ctx.textAlign='center';
+      labels.forEach((lbl,i) => {
+        ctx.fillText(lbl, padL+i*colW+colW/2, padT+plotH+18);
+        /* second line if needed */
+        if (lbl.includes(' ')) {
+          const parts = lbl.split(' ');
+          const mid = Math.ceil(parts.length/2);
+          ctx.fillText(parts.slice(0,mid).join(' '), padL+i*colW+colW/2, padT+plotH+18);
+          ctx.fillText(parts.slice(mid).join(' '), padL+i*colW+colW/2, padT+plotH+32);
+        }
+      });
+      ctx.fillStyle=TICK; ctx.font=TITLE_FONT; ctx.textAlign='left';
+      ctx.fillText('Avg salary (USD / yr)', padL, padT-2);
+    }
+
+    cancel = tween(900, p => {
+      drawStatic();
+      values.forEach((v,i) => {
+        const fullH = (v/maxV)*plotH;
+        const bh = fullH*p;
+        const x = padL+i*colW+colW*0.12;
+        const bw = colW*0.76;
+        const y = padT+plotH-bh;
+        ctx.fillStyle = colors[i];
+        ctx.beginPath(); ctx.roundRect(x,y,bw,bh,4); ctx.fill();
+        /* value label */
+        if (p>0.7) {
+          ctx.fillStyle='#EAF6F6'; ctx.font='bold 13px "Helvetica Neue",Arial,sans-serif';
+          ctx.textAlign='center'; ctx.globalAlpha=Math.min((p-0.7)/0.3,1);
+          ctx.fillText('$'+v+'K', padL+i*colW+colW/2, y-6);
+          ctx.globalAlpha=1;
+        }
+      });
+    });
+  }
+  return play;
+}
+
+/* ── line chart ── */
+function makeLine(id, datasets, opts={}) {
+  const cv = document.getElementById(id);
+  let cancel;
+
+  function play() {
+    if (cancel) cancel();
+    sizeCanvas(cv);
+    const ctx = cv.getContext('2d');
+    const dpr = devicePixelRatio;
+    ctx.scale(dpr, dpr);
+    const W = cv.width/dpr, H = cv.height/dpr;
+
+    const padL=54, padR=20, padT=14, padB=opts.xTitle?32:16;
+    const plotW=W-padL-padR, plotH=H-padT-padB;
+
+    const allVals = datasets.flatMap(d=>d.values);
+    const minV = opts.minV ?? Math.min(...allVals)*0.95;
+    const maxV = opts.maxV ?? Math.max(...allVals)*1.05;
+    const nPts  = datasets[0].values.length;
+
+    function xp(i) { return padL + (i/(nPts-1))*plotW; }
+    function yp(v) { return padT+plotH - ((v-minV)/(maxV-minV))*plotH; }
+
+    /* smooth cubic bezier path through points */
+    function buildPath(vals) {
+      const pts = vals.map((v,i)=>({x:xp(i),y:yp(v)}));
+      const path = new Path2D();
+      path.moveTo(pts[0].x, pts[0].y);
+      for (let i=1;i<pts.length;i++) {
+        const cp1x = (pts[i-1].x+pts[i].x)/2;
+        path.bezierCurveTo(cp1x,pts[i-1].y, cp1x,pts[i].y, pts[i].x,pts[i].y);
+      }
+      return path;
+    }
+
+    function drawGrid() {
+      ctx.clearRect(0,0,W,H);
+      const steps=4;
+      for(let s=0;s<=steps;s++){
+        const v=minV+(maxV-minV)*s/steps;
+        const y=yp(v);
+        ctx.strokeStyle=GRID; ctx.lineWidth=1;
+        ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(padL+plotW,y); ctx.stroke();
+        const label=opts.yFmt ? opts.yFmt(v) : Math.round(v);
+        ctx.fillStyle=TICK; ctx.font=LABEL_FONT; ctx.textAlign='right';
+        ctx.fillText(label, padL-6, y+4);
+      }
+      if (opts.yTitle) {
+        ctx.save(); ctx.translate(11,padT+plotH/2); ctx.rotate(-Math.PI/2);
+        ctx.fillStyle=TICK; ctx.font=TITLE_FONT; ctx.textAlign='center';
+        ctx.fillText(opts.yTitle,0,0); ctx.restore();
+      }
+    }
+
+    cancel = tween(1500, p => {
+      drawGrid();
+      /* clip to left portion */
+      const clipW = plotW*p;
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(padL, padT, clipW, plotH);
+      ctx.clip();
+
+      datasets.forEach(ds => {
+        const path = buildPath(ds.values);
+        /* fill area */
+        if (ds.fill) {
+          const fillPath = new Path2D(path);
+          fillPath.lineTo(xp(nPts-1), padT+plotH);
+          fillPath.lineTo(xp(0), padT+plotH);
+          fillPath.closePath();
+          ctx.fillStyle = ds.fillColor || 'rgba(0,192,202,.14)';
+          ctx.fill(fillPath);
+        }
+        /* stroke */
+        ctx.strokeStyle = ds.color;
+        ctx.lineWidth = ds.width || 3;
+        if (ds.dash) ctx.setLineDash(ds.dash); else ctx.setLineDash([]);
+        ctx.lineJoin='round'; ctx.lineCap='round';
+        ctx.stroke(path);
+        ctx.setLineDash([]);
+      });
+
+      ctx.restore();
+    });
+  }
+
+  return play;
+}
+
+/* ═══════════════════════════════════════════
+   DATA & CHART INSTANCES
+═══════════════════════════════════════════ */
+const m24 = Array.from({length:24},(_,i)=>i);
+
+const PLAYS = {};
+
+PLAYS[1] = makeHBar('c1',
+  ['Excel','Communication','Leadership','Collaboration','Problem solving',
+   'Data analysis','Machine learning','AI','Python','SQL'],
+  [54.1,46.7,31.5,18.5,13.8,1.9,.7,.9,.04,.02],
+  ['#00C0CA','#8FC440','#8FC440','#8FC440','#8FC440',
+   '#00C0CA','#00C0CA','#00C0CA','#00C0CA','#00C0CA'],
+  {log:true, xTitle:'% of skilled postings (log scale)'}
+);
+
+PLAYS[2] = makeLine('c2', [
+  { values: m24.map(x=>100*Math.pow(2.9,x/23)), color:'#00C0CA', width:3.5,
+    fill:true, fillColor:'rgba(0,192,202,.16)' },
+  { values: m24.map(x=>100*Math.pow(.62,x/23)), color:'#8FC440', width:2.5, dash:[7,5] }
+], { yTitle:'Index (start = 100)' });
+
+PLAYS[3] = makeLine('c3', [
+  { values: m24.map(x=>55000+x*16000+Math.sin(x/2)*9000), color:'#00C0CA', width:3.5,
+    fill:true, fillColor:'rgba(0,192,202,.14)' },
+  { values: m24.map(x=>40000+x*14000+Math.sin(x/2)*8000), color:'#3FA9B6', width:2.5, dash:[7,5] }
+], { yFmt:v=>(v/1000).toFixed(0)+'K' });
+
+PLAYS[4] = makeDivBar('c4',
+  ['SQL','TensorFlow','NLP','Machine learning','Deep learning',
+   'Power BI','Data analysis','AI','SAP','Leadership',
+   'Excel','Problem solving','Communication','Teamwork'],
+  [38,35,33,30,30,26,21,6,3,-4,-8,-10,-10,-14],
+  '#3FA9B6','#8FC440'
+);
+
+PLAYS[5] = makeHBar('c5',
+  ['Engineering → Python','Data & Analytics → SQL','Sales → Salesforce',
+   'Science → ML','Finance → Excel','Marketing → Tableau','Operations → SAP'],
+  [2.0,1.7,1.6,1.5,1.3,1.2,1.1],
+  ['#00C0CA','#00C0CA','#00C0CA','#00C0CA','#00C0CA','#00C0CA','#00C0CA'],
+  {xTitle:'Concentration vs. average (1.0× = typical)', xMax:2.2}
+);
+
+PLAYS[6] = makeVBar('c6',
+  ['No tracked skill','Hard only','Soft only','Hard + Soft'],
+  [35,35,46,49],
+  ['#5C7A82','#00C0CA','#8FC440','#1FB6A8']
+);
+
+/* ═══════════════════════════════════════════
+   SLIDE ENGINE
+═══════════════════════════════════════════ */
+const slides = [...document.querySelectorAll('.slide')];
+const N = slides.length;
+let cur=0, playing=true, timer=null;
+const DUR=5600;
+
+const dotsBox=document.getElementById('dots');
+slides.forEach((_,k)=>{
+  const d=document.createElement('div');
+  d.className='dot'+(k===0?' on':'');
+  d.onclick=()=>{showSlide(k);resetTimer();};
+  dotsBox.appendChild(d);
+});
+const dots=[...document.querySelectorAll('.dot')];
+
+function showSlide(n){
+  const prev=cur; cur=(n+N)%N;
+  if(prev===cur)return;
+  slides[prev].classList.remove('active');
+  slides[cur].classList.add('active');
+  dots.forEach((d,k)=>d.classList.toggle('on',k===cur));
+  document.getElementById('progbar').style.width=((cur/(N-1))*100)+'%';
+  if (cur===2){
+    const el=document.getElementById('call2');
+    el.classList.remove('show');
+    setTimeout(()=>el.classList.add('show'),1200);
+  }
+  if(PLAYS[cur]) setTimeout(()=>PLAYS[cur](), 180);
+}
+
+function next(){showSlide(cur+1);resetTimer();}
+function prev(){showSlide(cur-1);resetTimer();}
+function resetTimer(){
+  clearTimeout(timer);
+  if(!playing)return;
+  timer=setTimeout(()=>{
+    if(cur<N-1)next();
+    else{playing=false;document.getElementById('playbtn').textContent='▶ Play';}
+  },DUR);
+}
+function togglePlay(){
+  playing=!playing;
+  document.getElementById('playbtn').textContent=playing?'⏸ Auto':'▶ Play';
+  if(playing){if(cur>=N-1)showSlide(0);resetTimer();}
+  else clearTimeout(timer);
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'){e.preventDefault();prev();}
+  if(e.key==='f')document.documentElement.requestFullscreen?.();
+});
+
+/* handle resize */
+let resizeTimer;
+window.addEventListener('resize',()=>{
+  clearTimeout(resizeTimer);
+  resizeTimer=setTimeout(()=>{ if(PLAYS[cur]) PLAYS[cur](); },120);
+});
+
+resetTimer();
+</script>
+</body>
+</html>
