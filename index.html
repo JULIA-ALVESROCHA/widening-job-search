@@ -91,6 +91,7 @@ canvas.chart{position:absolute;inset:0;width:100%!important;height:100%!importan
 .source{flex-shrink:0;margin-top:.9rem;padding-top:.6rem;border-top:1px solid var(--ink-18);
   font-size:.7rem;line-height:1.5;color:rgba(34,64,77,.65);font-weight:500;letter-spacing:.01em;}
 .source b{color:rgba(34,64,77,.85);font-weight:700;}
+.source-note{flex-shrink:0;margin-top:.35rem;font-size:.68rem;line-height:1.45;color:rgba(34,64,77,.55);font-weight:500;font-style:italic;}
 
 .callout{position:absolute;z-index:5;background:rgba(255,255,255,.92);color:var(--ink);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1.5px solid var(--turq);border-radius:12px;padding:.6rem .8rem;font-size:.74rem;font-weight:600;line-height:1.35;max-width:230px;box-shadow:0 10px 30px -12px rgba(34,64,77,.4);opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;}
 .callout.show{opacity:1;transform:none;}
@@ -125,16 +126,16 @@ canvas.chart{position:absolute;inset:0;width:100%!important;height:100%!importan
 #topbar img{height:clamp(28px,3.6vh,42px);width:auto;object-fit:contain;display:block;}#topbar #tb-rev{height:clamp(14px,1.8vh,22px);}#topbar #tb-ja-inst{height:clamp(24px,3.0vh,36px);}
 #topbar .sep{width:1px;height:clamp(22px,2.8vh,34px);background:var(--ink-18);}
 
-.pagenum{position:fixed;top:18px;right:24px;z-index:50;font-size:.66rem;font-weight:600;letter-spacing:.1em;color:var(--ink-40);}
-.slide:not(.cover){padding-top:clamp(8vh,11vh,13vh);}
+.pagenum{position:fixed;top:14px;right:24px;z-index:50;font-size:.66rem;font-weight:600;letter-spacing:.1em;color:var(--ink-40);background:rgba(255,255,255,.72);border:1px solid var(--ink-10);border-radius:7px;padding:.4rem .65rem;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}
+.slide:not(.cover){padding-top:clamp(8vh,11vh,13vh);padding-bottom:clamp(5vh,6.5vh,7.5vh);}
 
 #progbar{position:fixed;bottom:0;left:0;height:3px;z-index:50;width:0;background:linear-gradient(90deg,var(--aqua),var(--lime));transition:width .5s cubic-bezier(.4,0,.2,1);}
-.dots{position:fixed;bottom:16px;right:22px;z-index:50;display:flex;gap:7px;}
+.dots{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:7px;}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--ink-18);cursor:pointer;transition:all .25s;}
 .dot.on{background:var(--teal);transform:scale(1.45);}
 .dot:hover{background:var(--ink-40);}
-.ctrls{position:fixed;bottom:13px;left:22px;z-index:50;display:flex;gap:8px;align-items:center;}
-.ctrls button{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:600;color:var(--ink);background:rgba(255,255,255,.7);border:1px solid var(--ink-10);border-radius:8px;padding:.4rem .8rem;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:all .18s;}
+.ctrls{position:fixed;top:14px;right:104px;z-index:50;display:flex;gap:6px;align-items:center;}
+.ctrls button{font-family:'Montserrat',sans-serif;font-size:.66rem;font-weight:600;color:var(--ink);background:rgba(255,255,255,.72);border:1px solid var(--ink-10);border-radius:7px;padding:.4rem .65rem;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:all .18s;}
 .ctrls button:hover{background:#fff;border-color:var(--ink-18);}
 
 h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
@@ -211,33 +212,11 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
     </div>
   </section>
 
-  <!-- ░░ 1 · DEMAND LANDSCAPE ░░ -->
+  <!-- ░░ 1 · TWO-THIRDS SOFT (was 02) ░░ -->
   <section class="slide" data-i="1">
-    <div class="eyebrow rise d1"><span class="num">01</span> The Landscape <span class="rule"></span></div>
-    <h1 class="title rise d1">Communication and soft skills <span class="accent">lead demand</span>; technical skills stay niche.</h1>
-    <p class="subtitle rise d2">Share of skilled postings (≥1 tracked skill) that mention each skill. The everyday toolkit — Excel and Communication — anchors more than half the market.</p>
-    <div class="body rise d3">
-      <div class="chart-stage"><canvas id="c1" class="chart"></canvas></div>
-      <div class="readout glass">
-        <span class="lead">The shape of demand</span>
-        <div><div class="big">54.1<small>%</small></div><div class="k" style="font-size:.66rem;color:var(--ink-55);margin-top:.3rem">of skilled postings mention Excel — the single most-requested skill</div></div>
-        <div class="divline"></div>
-        <p>Communication (46.7%) and Leadership (31.5%) follow. Pure technical skills — Python, SQL, ML — sit below 1% each.</p>
-        <div class="note">"Niche" means low <b>frequency</b>, not low value. The next slides show those niche skills command the steepest growth and the highest pay.</div>
-      </div>
-    </div>
-    <div class="legend rise d3">
-      <span><i style="background:var(--aqua)"></i>Hard skill</span>
-      <span><i style="background:var(--lime)"></i>Soft skill</span>
-    </div>
-    <div class="source">Source: <b>Job postings master dataset</b> (Revelio Labs) · Analysis restricted to postings with ≥1 tracked skill · Skills extracted via keyword matching (binary presence) · Salary outliers removed via IQR×1.5</div>
-  </section>
-
-  <!-- ░░ 2 · TWO-THIRDS SOFT ░░ -->
-  <section class="slide" data-i="2">
-    <div class="eyebrow rise d1"><span class="num">02</span> The Mix <span class="rule"></span></div>
+    <div class="eyebrow rise d1"><span class="num">01</span> The Mix <span class="rule"></span></div>
     <h1 class="title rise d1">Soft skills make up <span class="pop">two-thirds</span> of all skill demand.</h1>
-    <p class="subtitle rise d2">Of every tracked-skill mention across the dataset, 63.4% are human-centric skills. Hard skills are concentrated in far fewer postings.</p>
+    <p class="subtitle rise d2">Across 9.1M skilled postings, 63.4% of every tracked-skill mention is human-centric — and the top skills (Communication, Leadership and Collaboration) alone account for nearly two of every three references in the market.</p>
     <div class="body rise d3">
       <div class="chart-stage"><canvas id="c2" class="chart"></canvas></div>
       <div class="readout glass">
@@ -251,18 +230,18 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
       </div>
     </div>
     <div class="legend rise d3">
-      <span><i style="background:var(--aqua)"></i>Hard skill mentions</span>
       <span><i style="background:var(--lime)"></i>Soft skill mentions</span>
-      <span style="color:var(--ink-40)">Bar chart axis shows mentions per skill (millions)</span>
+      <span><i style="background:var(--aqua)"></i>Hard skill mentions</span>
     </div>
-    <div class="source">Source: <b>Job postings master dataset</b> (Revelio Labs) · Left: split of all tracked-skill mentions · Right: mentions per individual skill · Salary outliers removed via IQR×1.5</div>
+    <div class="source">Source: <b>Job postings master dataset (Revelio Labs) </b> | Analysis restricted to postings with ≥1 tracked skill | Skills extracted via keyword matching (binary presence) | Salary outliers removed via IQR×1.5</div>
+    <div class="source-note">Donut: share of all tracked-skill mentions · Bars: skilled postings per skill (millions) </div>
   </section>
 
-  <!-- ░░ 3 · SENIORITY SPLIT ░░ -->
-  <section class="slide" data-i="3">
-    <div class="eyebrow rise d1"><span class="num">03</span> Seniority <span class="rule"></span></div>
-    <h1 class="title rise d1">Technical skills cluster in <span class="accent">senior roles</span>; accessible skills skew entry-level.</h1>
-    <p class="subtitle rise d2">Each bar shows a skill's senior share minus 50%. Left of centre = entry-leaning; right = senior-leaning. Ordered by overall frequency.</p>
+  <!-- ░░ 2 · SENIORITY SPLIT (was 03) ░░ -->
+  <section class="slide" data-i="2">
+    <div class="eyebrow rise d1"><span class="num">02</span> Seniority <span class="rule"></span></div>
+    <h1 class="title rise d1">Technical skills lean <span class="accent">senior</span>; soft skills skew <span class="pop">entry-level</span>.</h1>
+    <p class="subtitle rise d2">Machine learning (80%)  and NLP (83%) postings are dominated by senior roles — while Teamwork (64%) and Communication (60%) sit firmly in the entry-level column. The technical skills the market grows fastest are the ones newcomers can't yet be asked for.</p>
     <div class="body rise d3">
       <div class="chart-stage"><canvas id="c3" class="chart"></canvas></div>
       <div class="readout glass">
@@ -274,18 +253,19 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
       </div>
     </div>
     <div class="legend rise d3">
-      <span><i style="background:var(--aqua)"></i>Hard skill</span>
       <span><i style="background:var(--lime)"></i>Soft skill</span>
-      <span style="color:var(--ink-40)">← entry-leaning&nbsp;&nbsp;·&nbsp;&nbsp;senior-leaning →</span>
+      <span><i style="background:var(--aqua)"></i>Hard skill</span>
+      <span style="color:var(--ink-40)"> ← more entry-level &nbsp;·&nbsp; more senior →</span>
     </div>
-    <div class="source">Source: <b>Job postings master dataset</b> (Revelio Labs) · Bar = senior share − 50% · Experience level inferred from posting title/seniority tags · Salary outliers removed via IQR×1.5</div>
+    <div class="source">Source: <b>Job postings master dataset (Revelio Labs)</b> | Analysis restricted to postings with ≥1 tracked skill | Skills extracted via keyword matching (binary presence) | Salary outliers removed via IQR×1.5</div>
+    <div class="source-note">Scale: percentage-point distance from 50/50 · Bar = senior share − % · left = entry-leaning, right = senior-leaning · soft skills grouped at top, then hard skills (each by frequency)</div>
   </section>
 
-  <!-- ░░ 4 · ENTRY TRAILS SENIOR ░░ -->
-  <section class="slide" data-i="4">
-    <div class="eyebrow rise d1"><span class="num">04</span> Who's Hiring <span class="rule"></span></div>
+  <!-- ░░ 3 · ENTRY TRAILS SENIOR (was 04) ░░ -->
+  <section class="slide" data-i="3">
+    <div class="eyebrow rise d1"><span class="num">03</span> Who's Hiring <span class="rule"></span></div>
     <h1 class="title rise d1">Entry-level demand has <span class="accent">trailed senior</span> throughout the period.</h1>
-    <p class="subtitle rise d2">Total monthly mentions across all tracked skills, by experience level (3-month rolling average). The gap is persistent — it never closes.</p>
+    <p class="subtitle rise d2">In every single month from January 2021 to April 2026, total skill mentions in senior-tagged postings exceeded entry-level ones — and the gap widened from ~30K mentions/month at the start to roughly 100K by 2025-09. Hiring volume rose for both, but the early-career deficit held.</p>
     <div class="body rise d3">
       <div class="chart-stage"><canvas id="c4" class="chart"></canvas></div>
       <div class="readout glass">
@@ -299,18 +279,19 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
       <span><i style="background:var(--aqua)"></i>Entry-level</span>
       <span><i style="background:var(--blue)"></i>Senior</span>
     </div>
-    <div class="source">Source: <b>Job postings master dataset</b> (Revelio Labs) · Total monthly mentions across all tracked skills · 3-month rolling avg · Salary outliers removed via IQR×1.5</div>
+    <div class="source">Source: <b>Job postings master dataset (Revelio Labs)</b> | Analysis restricted to postings with ≥1 tracked skill | Skills extracted via keyword matching (binary presence) | Salary outliers removed via IQR×1.5</div>
+    <div class="source-note">Total monthly mentions across all tracked skills, by experience level (3-mo avg)</div>
   </section>
 
-  <!-- ░░ 5 · COMMUNICATION SLIPS / AI CLIMBS ░░ -->
-  <section class="slide" data-i="5">
-    <div class="eyebrow rise d1"><span class="num">05</span> The Shift <span class="rule"></span></div>
+  <!-- ░░ 4 · COMMUNICATION SLIPS / AI CLIMBS (was 05) ░░ -->
+  <section class="slide" data-i="4">
+    <div class="eyebrow rise d1"><span class="num">04</span> The Shift <span class="rule"></span></div>
     <h1 class="title rise d1">Communication demand slips as <span class="pop">AI skills climb</span>.</h1>
-    <p class="subtitle rise d2">Each line = the % of that month's skilled postings mentioning the skill (3-mo rolling avg). Showing share <em>controls for overall hiring volume</em> — so this is proportion within jobs, not raw market size.</p>
+    <p class="subtitle rise d2">Communication's share of skilled postings eased from ~57% in 2021 to ~45% in 2026 — a 12-point drop. Meanwhile AI-related skills (AI, ML, Deep Learning) climbed from a near-zero base into double digits in postings that mention them. The mix is moving, not just the volume.</p>
     <div class="body rise d3">
       <div class="chart-stage">
         <canvas id="c5" class="chart"></canvas>
-        <div class="callout" id="call5" style="top:8%;right:2%">AI-related skills rising <b>↑</b> while Communication's share eases <b>↓</b></div>
+        <div class="callout" id="call5" style="top:8%;left:2%;max-width:200px">AI-related skills rising <b>↑</b><br>while Communication's share eases <b>↓</b></div>
       </div>
       <div class="readout glass">
         <span class="lead">Reading the trend</span>
@@ -319,14 +300,24 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
         <div class="note">Caveat for the room: there is a <b>fixed set of soft skills</b> but an <b>ever-growing list of hard skills</b>. Some hard-skill rise reflects new tools entering the panel — not only deeper demand per job.</div>
       </div>
     </div>
-    <div class="source">Source: <b>Job postings master dataset</b> (Revelio Labs) · % of each month's skilled postings mentioning the skill · 3-mo rolling avg · 22 skills shown · Salary outliers removed via IQR×1.5</div>
+    <div class="legend rise d3">
+      <span><i style="background:var(--aqua)"></i>Excel</span>
+      <span><i style="background:var(--lime)"></i>Communication</span>
+      <span><i style="background:#E07A5F"></i>Leadership</span>
+      <span><i style="background:var(--yellow)"></i>AI / Deep Learning</span>
+      <span><i style="background:var(--jade)"></i>TensorFlow</span>
+      <span><i style="background:var(--azure)"></i>MS Office</span>
+      <span><i style="background:var(--teal)"></i>Adaptability</span>
+    </div>
+    <div class="source">Source: <b>Job postings master dataset (Revelio Labs)</b> | Analysis restricted to postings with ≥1 tracked skill | Skills extracted via keyword matching (binary presence) | Salary outliers removed via IQR×1.5</div>
+    <div class="source-note">Each line = % of that month's skilled postings that mention the skill (3-mo rolling avg) · controls for overall hiring volume</div>
   </section>
 
-  <!-- ░░ 6 · HARD OUTPACES SOFT ░░ -->
-  <section class="slide" data-i="6">
-    <div class="eyebrow rise d1"><span class="num">06</span> The Trend <span class="rule"></span></div>
+  <!-- ░░ 5 · HARD OUTPACES SOFT (was 06) ░░ -->
+  <section class="slide" data-i="5">
+    <div class="eyebrow rise d1"><span class="num">05</span> The Trend <span class="rule"></span></div>
     <h1 class="title rise d1">Hard-skill demand has <span class="accent">outpaced</span> soft over time.</h1>
-    <p class="subtitle rise d2">Indexed to 100 at the first period: all hard skills grew +560% vs. all soft skills +471% over 2021-01 to 2026-04 — hard skills grew 1.16× as fast.</p>
+    <p class="subtitle rise d2">From January 2021 to April 2026, total hard-skill mentions grew +560% while soft-skill mentions grew +471% — a 1.16× gap that opened wide in 2025 and never fully closed.</p>
     <div class="body rise d3">
       <div class="chart-stage">
         <canvas id="c6" class="chart"></canvas>
@@ -343,18 +334,19 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
       </div>
     </div>
     <div class="legend rise d3">
-      <span><i style="background:var(--turq)"></i>Hard skills — solid line</span>
-      <span><i style="background:var(--lime)"></i>Soft skills — dashed line</span>
-      <span><i style="background:rgba(0,192,202,.16);border:1px solid rgba(0,192,202,.16);width:14px;height:14px;border-radius:3px"></i>Shaded band = hard-minus-soft gap</span>
+      <span><i style="background:var(--turq)"></i><b>Solid line — Hard skills</b> (all hard-skill mentions, indexed to 100 at Jan-2021)</span>
+      <span><i style="background:var(--lime)"></i><b>Dashed line — Soft skills</b> (all soft-skill mentions, indexed to 100 at Jan-2021)</span>
+      <span><i style="background:rgba(0,192,202,.16);border:1px solid rgba(0,192,202,.16);width:14px;height:14px;border-radius:3px"></i>Shaded band = hard-minus-soft gap (the lead hard built up)</span>
     </div>
-    <div class="source">Source: <b>Job postings master dataset</b> (Revelio Labs) · Each series indexed to 100 at 2021-01 · Shaded band = the hard-minus-soft gap · Salary outliers removed via IQR×1.5</div>
+    <div class="source">Source: <b>Job postings master dataset (Revelio Labs)</b> | Analysis restricted to postings with ≥1 tracked skill | Skills extracted via keyword matching (binary presence) | Salary outliers removed via IQR×1.5</div>
+    <div class="source-note">All hard skills (+560%) vs. all soft skills (+471%) over 2021-01 → 2026-04, each indexed to 100 · shaded area = the gap</div>
   </section>
 
-  <!-- ░░ 7 · EDUCATION UNIVERSALITY ░░ -->
-  <section class="slide" data-i="7">
-    <div class="eyebrow rise d1"><span class="num">07</span> Education <span class="rule"></span></div>
+  <!-- ░░ 6 · EDUCATION UNIVERSALITY (was 07) ░░ -->
+  <section class="slide" data-i="6">
+    <div class="eyebrow rise d1"><span class="num">06</span> Education <span class="rule"></span></div>
     <h1 class="title rise d1">Soft skills are <span class="accent">near-universal</span> at every degree level; technical skills are not.</h1>
-    <p class="subtitle rise d2">Among skilled postings, the share mentioning ≥1 hard vs. ≥1 soft skill, by education level required.</p>
+    <p class="subtitle rise d2">Soft-skill demand sits between 85% and 91% from High School through PhD — a six-point band. Hard-skill demand swings twelve points (61% to 73%) and peaks at the Bachelor's level, then falls again at Master's and PhD.</p>
     <div class="body rise d3">
       <div class="chart-stage"><canvas id="c7" class="chart"></canvas></div>
       <div class="readout glass">
@@ -368,14 +360,41 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
       <span><i style="background:var(--aqua)"></i>Hard skill</span>
       <span><i style="background:var(--lime)"></i>Soft skill</span>
     </div>
-    <div class="source">Source: <b>Job postings master dataset</b> (Revelio Labs) · Share mentioning ≥1 hard vs ≥1 soft skill by required education · Salary outliers removed via IQR×1.5</div>
+    <div class="source">Source: <b>Job postings master dataset (Revelio Labs)</b> | Analysis restricted to postings with ≥1 tracked skill | Skills extracted via keyword matching (binary presence) | Salary outliers removed via IQR×1.5</div>
+    <div class="source-note">Among skilled postings: share mentioning ≥1 hard vs. ≥1 soft skill, by education level</div>
   </section>
 
-  <!-- ░░ 8 · PAY: PAIRING PREMIUM ░░ -->
+  <!-- ░░ 7 · NEW: SOFT-SKILL SHARE OVER TIME BY EDUCATION LEVEL ░░ -->
+  <section class="slide" data-i="7">
+    <div class="eyebrow rise d1"><span class="num">07</span> Education Over Time <span class="rule"></span></div>
+    <h1 class="title rise d1">Soft-skill demand is <span class="accent">structural</span>, not cyclical — but the Bachelor's market just <span class="pop">cracked</span>.</h1>
+    <p class="subtitle rise d2">High School, Associate, Master's and PhD postings all hold between 86% and 92% across five years, while Bachelor's postings fall from ~91% to ~78% in early 2025 before partially recovering — a 13-point break in the country's most-hired credential.</p>
+    <div class="body rise d3">
+      <div class="chart-stage"><canvas id="c7b" class="chart"></canvas></div>
+      <div class="readout glass">
+        <span class="lead">Two stories at once</span>
+        <p><b style="color:var(--ink)">Stable</b> — Four of the five degree levels stay in a narrow 6-point band across the entire window. Soft-skill demand doesn't move with the cycle.</p>
+        <div class="divline"></div>
+        <p><b style="color:var(--ink)">The Bachelor's break</b> — Only the Bachelor's line diverges, and only in 2025. The level employers hire from most often saw the steepest soft-skill retreat.</p>
+        <div class="note">The PhD line wiggles because monthly PhD sample sizes are small — read the level, not the noise.</div>
+      </div>
+    </div>
+    <div class="legend rise d3">
+      <span><i style="background:#BBD153"></i>High School</span>
+      <span><i style="background:var(--jade)"></i>Associate</span>
+      <span><i style="background:var(--turq)"></i>Bachelor's</span>
+      <span><i style="background:var(--blue)"></i>Master's</span>
+      <span><i style="background:#E07A5F"></i>PhD</span>
+    </div>
+    <div class="source">Source: <b>Job postings master  (Revelio Labs)</b> | Analysis restricted to postings with ≥1 tracked skill | Skills extracted via keyword matching (binary presence) | Salary outliers removed via IQR×1.5</div>
+    <div class="source-note">% of each level's postings mentioning ≥1 soft skill (3-month rolling avg)</div>
+  </section>
+
+  <!-- ░░ 8 · PAY: PAIRING PREMIUM (was 08) ░░ -->
   <section class="slide" data-i="8">
     <div class="eyebrow rise d1"><span class="num">08</span> The Money <span class="rule"></span></div>
     <h1 class="title rise d1">The accessible soft-skill roles pay less — the premium is in the <span class="pop">pairing</span>.</h1>
-    <p class="subtitle rise d2">Average salary by mutually-exclusive skill mix. Combining hard + soft skills lifts pay above any single category.</p>
+    <p class="subtitle rise d2">Soft-only postings average $46K and out-earn Hard-only ($35K), but Hard + Soft together reach $49K — a +$3.2K (+7.0%) lift over soft-only and +$14K over hard-only. The pairing, not either skill type alone, sets the salary ceiling.</p>
     <div class="body rise d3">
       <div class="chart-stage"><canvas id="c8" class="chart"></canvas></div>
       <div class="readout glass">
@@ -392,14 +411,15 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
       <span><i style="background:var(--aqua)"></i>Hard only</span>
       <span><i style="background:var(--jade)"></i>Hard + Soft</span>
     </div>
-    <div class="source">Source: <b>Job postings master dataset</b> (Revelio Labs) · Mean salary by mutually-exclusive skill mix · IQR×1.5 outliers removed · n shown per group</div>
+    <div class="source">Source: <b>Job postings master dataset (Revelio Labs)</b> | Analysis restricted to postings with ≥1 tracked skill | Skills extracted via keyword matching (binary presence) | Salary outliers removed via IQR×1.5</div>
+    <div class="source-note">Mean & median by mutually-exclusive skill mix · IQR×1.5 outliers removed · n shown per group</div>
   </section>
 
   <!-- ░░ 9 · AI DEMAND BY FIELD ░░ -->
   <section class="slide" data-i="9">
     <div class="eyebrow rise d1"><span class="num">09</span> Where It's Coming From <span class="rule"></span></div>
     <h1 class="title rise d1">AI-skill demand is rising in <span class="accent">every field</span> — Marketing leads the gain.</h1>
-    <p class="subtitle rise d2">Change in the share of each field's postings requesting ≥1 AI-related skill (AI / ML / Deep Learning / TensorFlow / PyTorch / NLP), 2021 → 2026.</p>
+    <p class="subtitle rise d2">Marketing postings asking for ≥1 AI-related skill rose +2.1 percentage points from 2021 to 2026 — the largest increase of any field. Finance (+1.3 pp) and Operations (+1.0 pp) follow; even Engineering (+0.6 pp) and Sales (+0.7 pp), the lowest movers, still moved. None declined.</p>
     <div class="defchips rise d2">
       <span class="chip">Measured as <b>share of a field's postings</b> — within-job proportion, not raw volume</span>
       <span class="chip">Every field <b>increased</b>; none declined</span>
@@ -416,35 +436,76 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
     </div>
     <div class="legend rise d3">
       <span><i style="background:var(--aqua)"></i>Increase in AI-skill share (pp)</span>
+      <span><i style="background:linear-gradient(90deg,var(--turq),var(--lime))"></i>Marketing — largest gain (highlighted)</span>
     </div>
-    <div class="source">Source: <b>Job postings master dataset</b> (Revelio Labs) · Change in share of each field's postings requesting ≥1 AI-related skill · 2021 → 2026 · Salary outliers removed via IQR×1.5</div>
+    <div class="source">Source: <b>Job postings master dataset (Revelio Labs)</b> | Analysis restricted to postings with ≥1 tracked skill | Skills extracted via keyword matching (binary presence) | Salary outliers removed via IQR×1.5</div>
+    <div class="source-note">Change in share of each field's postings requesting ≥1 AI-related skill · 2021-01–2021-08 → 2025-09–2026-04 · largest gain: Marketing (+2.1 pp)</div>
   </section>
 
   <!-- ░░ 10 · TAKEAWAYS ░░ -->
   <section class="slide" data-i="10">
     <div class="eyebrow rise d1"><span class="num">10</span> What It Means <span class="rule"></span></div>
     <h1 class="title rise d1">Widening the aperture: <span class="pop">human-centric skills</span> are the early-career on-ramp.</h1>
-    <div class="body rise d2" style="display:block;">
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;height:100%;">
-        <div class="glass" style="padding:1.4rem 1.5rem;display:flex;flex-direction:column;gap:.5rem;">
-          <div class="big" style="font-size:1.6rem;color:var(--teal)">①&nbsp; Demand is human-first</div>
-          <p style="font-size:.86rem;color:var(--ink-70);line-height:1.55">Soft skills are two-thirds of all demand and near-universal across every degree level — the common language of work.</p>
+    <p class="subtitle rise d2">Four insights from 19.9M postings — each one a lever for the next generation of talent.</p>
+    <div class="body rise d3" style="display:block;">
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:1fr 1fr;gap:1.1rem;height:100%;">
+
+        <div class="glass" style="padding:1.4rem 1.6rem;display:flex;flex-direction:column;gap:.6rem;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;width:5px;height:100%;background:var(--lime);"></div>
+          <div style="display:flex;align-items:baseline;gap:.8rem;">
+            <div style="font-size:2.4rem;font-weight:700;color:var(--lime);line-height:1;">01</div>
+            <div style="font-size:1.05rem;font-weight:600;color:var(--ink);">Demand is human-first</div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:baseline;">
+            <div style="font-size:1.6rem;font-weight:700;color:var(--teal);line-height:1;">63.4%</div>
+            <div style="font-size:.7rem;color:var(--ink-55);font-weight:600;text-transform:uppercase;letter-spacing:.06em;">of mentions are soft skills</div>
+          </div>
+          <p style="font-size:.82rem;color:var(--ink-70);line-height:1.55;margin-top:.2rem;">Soft skills are near-universal across every degree level (85–91%) — the common language of work, whatever the credential.</p>
         </div>
-        <div class="glass" style="padding:1.4rem 1.5rem;display:flex;flex-direction:column;gap:.5rem;">
-          <div class="big" style="font-size:1.6rem;color:var(--teal)">②&nbsp; Tech is the fast lane</div>
-          <p style="font-size:.86rem;color:var(--ink-70);line-height:1.55">Hard skills grow 1.16× faster and cluster in senior roles — but part of that rise is an ever-expanding skill list, not only deeper per-job demand.</p>
+
+        <div class="glass" style="padding:1.4rem 1.6rem;display:flex;flex-direction:column;gap:.6rem;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;width:5px;height:100%;background:var(--aqua);"></div>
+          <div style="display:flex;align-items:baseline;gap:.8rem;">
+            <div style="font-size:2.4rem;font-weight:700;color:var(--aqua);line-height:1;">02</div>
+            <div style="font-size:1.05rem;font-weight:600;color:var(--ink);">Tech is the fast lane</div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:baseline;">
+            <div style="font-size:1.6rem;font-weight:700;color:var(--teal);line-height:1;">1.16×</div>
+            <div style="font-size:.7rem;color:var(--ink-55);font-weight:600;text-transform:uppercase;letter-spacing:.06em;">hard-skill growth vs. soft</div>
+          </div>
+          <p style="font-size:.82rem;color:var(--ink-70);line-height:1.55;margin-top:.2rem;">Hard skills cluster in senior roles (80–85% senior for ML, PyTorch, NLP) — part of the rise is the panel itself expanding, not only deeper per-job demand.</p>
         </div>
-        <div class="glass" style="padding:1.4rem 1.5rem;display:flex;flex-direction:column;gap:.5rem;">
-          <div class="big" style="font-size:1.6rem;color:var(--teal)">③&nbsp; The pairing pays</div>
-          <p style="font-size:.86rem;color:var(--ink-70);line-height:1.55">Hard + Soft together earn the highest salaries (+7% over soft-only). Complementary skills, not either/or.</p>
+
+        <div class="glass" style="padding:1.4rem 1.6rem;display:flex;flex-direction:column;gap:.6rem;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;width:5px;height:100%;background:var(--jade);"></div>
+          <div style="display:flex;align-items:baseline;gap:.8rem;">
+            <div style="font-size:2.4rem;font-weight:700;color:var(--jade);line-height:1;">03</div>
+            <div style="font-size:1.05rem;font-weight:600;color:var(--ink);">The pairing pays</div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:baseline;">
+            <div style="font-size:1.6rem;font-weight:700;color:var(--teal);line-height:1;">+7.0%</div>
+            <div style="font-size:.7rem;color:var(--ink-55);font-weight:600;text-transform:uppercase;letter-spacing:.06em;">salary lift, hard + soft</div>
+          </div>
+          <p style="font-size:.82rem;color:var(--ink-70);line-height:1.55;margin-top:.2rem;">Hard + Soft together earn the highest salaries ($49K). Complementary skills, not either/or — and the cleanest message for early talent.</p>
         </div>
-        <div class="glass" style="padding:1.4rem 1.5rem;display:flex;flex-direction:column;gap:.5rem;">
-          <div class="big" style="font-size:1.6rem;color:var(--teal)">④&nbsp; Widen the search</div>
-          <p style="font-size:.86rem;color:var(--ink-70);line-height:1.55">Early careers open through human-centric skills + experience. Hiring on these widens the aperture for emerging talent.</p>
+
+        <div class="glass" style="padding:1.4rem 1.6rem;display:flex;flex-direction:column;gap:.6rem;position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(0,160,175,.10),rgba(143,196,64,.10));">
+          <div style="position:absolute;top:0;left:0;width:5px;height:100%;background:linear-gradient(180deg,var(--turq),var(--lime));"></div>
+          <div style="display:flex;align-items:baseline;gap:.8rem;">
+            <div style="font-size:2.4rem;font-weight:700;background:linear-gradient(100deg,var(--turq),var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1;">04</div>
+            <div style="font-size:1.05rem;font-weight:600;color:var(--ink);">Widen the search</div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:baseline;">
+            <div style="font-size:1.6rem;font-weight:700;color:var(--teal);line-height:1;">+2.1pp</div>
+            <div style="font-size:.7rem;color:var(--ink-55);font-weight:600;text-transform:uppercase;letter-spacing:.06em;">AI rising even in Marketing</div>
+          </div>
+          <p style="font-size:.82rem;color:var(--ink-70);line-height:1.55;margin-top:.2rem;">Early careers open through human-centric skills + experience. Hiring on these — not just credentials — widens the aperture for emerging talent.</p>
         </div>
+
       </div>
     </div>
-    <div class="source">Future Talent Council — Emerging Leaders Ecosystem × JA Worldwide · Data: Revelio Labs job postings master dataset (19.9M postings, 26 skills)</div>
+    <div class="source">Future Talent Council — Emerging Leaders Ecosystem × JA Worldwide · Data: <b>Job postings master dataset</b> (19,948,598 postings, 26 skills tracked)</div>
+    <div class="source-note">Analysis universe: 9,109,900 postings with ≥1 tracked skill (45.7% of all postings)</div>
   </section>
 
 </div>
@@ -479,31 +540,43 @@ function tween(dur,onFrame,onDone){let raf,start;function tick(ts){if(!start)sta
 function sizeCanvas(cv){const r=cv.parentElement.getBoundingClientRect();cv.width=r.width*devicePixelRatio;cv.height=r.height*devicePixelRatio;cv.style.width=r.width+'px';cv.style.height=r.height+'px';return r;}
 function ctxOf(cv){sizeCanvas(cv);const ctx=cv.getContext('2d');ctx.scale(devicePixelRatio,devicePixelRatio);return{ctx,W:cv.width/devicePixelRatio,H:cv.height/devicePixelRatio};}
 
-function chart1(){const cv=document.getElementById('c1');let cancel;const data=[['EXCEL',54.1,C.aqua],['COMMUNICATION',46.7,C.lime],['LEADERSHIP',31.5,C.lime],['COLLABORATION',18.5,C.lime],['PROBLEM SOLVING',13.8,C.lime],['INTERPERSONAL',12.3,C.lime],['MS OFFICE',10.5,C.aqua],['TEAMWORK',8.9,C.lime],['SAP',8.7,C.aqua],['ADAPTABILITY',4.1,C.lime],['CRITICAL THINKING',2.1,C.lime],['DATA ANALYSIS',1.9,C.aqua],['SALESFORCE',1.2,C.aqua],['AI',0.9,C.aqua],['MACHINE LEARNING',0.7,C.aqua]];return function(){if(cancel)cancel();const{ctx,W,H}=ctxOf(cv);const padL=152,padR=58,padT=10,padB=26,n=data.length;const plotW=W-padL-padR,plotH=H-padT-padB,rowH=plotH/n,xMax=60;const xs=v=>padL+(v/xMax)*plotW;function grid(){ctx.clearRect(0,0,W,H);ctx.font='11px '+FONT;ctx.textAlign='center';for(let v=0;v<=60;v+=15){const x=xs(v);ctx.strokeStyle=C.grid;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,padT);ctx.lineTo(x,padT+plotH);ctx.stroke();ctx.fillStyle=C.tick;ctx.fillText(v+'%',x,padT+plotH+16);}ctx.textAlign='right';ctx.font='600 11.5px '+FONT;ctx.fillStyle=C.ink;data.forEach((d,i)=>{const y=padT+i*rowH+rowH/2+4;ctx.fillText(d[0],padL-10,y);});}cancel=tween(1150,p=>{grid();data.forEach((d,i)=>{const x0=xs(0),x1=lerp(x0,xs(d[1]),p),y=padT+i*rowH+rowH*0.2,bh=rowH*0.6;ctx.fillStyle=d[2];ctx.beginPath();ctx.roundRect(x0,y,Math.max(x1-x0,0),bh,3);ctx.fill();if(p>0.85){ctx.globalAlpha=(p-0.85)/0.15;ctx.fillStyle=C.ink;ctx.font='700 11px '+FONT;ctx.textAlign='left';ctx.fillText(d[1].toFixed(1)+'%',x1+6,y+bh/2+4);ctx.globalAlpha=1;}});});};}
+function chart2(){const cv=document.getElementById('c2');let cancel;const bars=[['EXCEL',4932591,C.aqua],['COMMUNICATION',4256755,C.lime],['LEADERSHIP',2867241,C.lime],['COLLABORATION',1688149,C.lime],['PROBLEM SOLVING',1257686,C.lime],['INTERPERSONAL',1123590,C.lime],['MS OFFICE',954592,C.aqua],['TEAMWORK',810063,C.lime],['SAP',796663,C.aqua],['ADAPTABILITY',373145,C.lime],['CRITICAL THINKING',195546,C.lime],['DATA ANALYSIS',176601,C.aqua]];return function(){if(cancel)cancel();const{ctx,W,H}=ctxOf(cv);const donutW=W*0.34;const cx=donutW*0.52,cy=H*0.45,R=Math.min(donutW*0.38,H*0.36),r=R*0.58;const labelL=donutW+8,bx=donutW+108,padR=58,padT=22,padB=30;const plotW=W-bx-padR,plotH=H-padT-padB,rowH=plotH/bars.length,maxV=5000000;function grid(){ctx.clearRect(0,0,W,H);/* bar chart title */ctx.fillStyle=C.ink;ctx.font='700 11px '+FONT;ctx.textAlign='left';ctx.fillText('.',labelL,padT-8);/* axis ticks */const ticks=[0,1000000,2000000,3000000,4000000,5000000];ticks.forEach(v=>{const x=bx+(v/maxV)*plotW;ctx.strokeStyle=C.grid;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,padT);ctx.lineTo(x,padT+plotH);ctx.stroke();ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='center';ctx.fillText((v/1e6).toFixed(0)+'M',x,padT+plotH+14);});/* axis title */ctx.fillStyle=C.tick;ctx.font='italic 10px '+FONT;ctx.textAlign='center';ctx.fillText('Skilled postings (millions)',bx+plotW/2,padT+plotH+28);/* row labels */ctx.fillStyle=C.ink;ctx.font='600 10px '+FONT;ctx.textAlign='right';bars.forEach((d,i)=>{const y=padT+i*rowH+rowH/2+3;ctx.fillText(d[0],bx-8,y);});}cancel=tween(1400,p=>{grid();/* donut */const soft=0.634,segs=[[soft,C.lime],[1-soft,C.aqua]];let a0=-Math.PI/2;segs.forEach(s=>{const a1=a0+s[0]*Math.PI*2*p;ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,R,a0,a1);ctx.closePath();ctx.fillStyle=s[1];ctx.fill();a0=a1;});ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fillStyle='#F7FBFC';ctx.fill();if(p>0.5){ctx.globalAlpha=(p-0.5)/0.5;ctx.fillStyle=C.ink;ctx.textAlign='center';ctx.font='700 22px '+FONT;ctx.fillText('63.4%',cx,cy-2);ctx.font='600 11px '+FONT;ctx.fillStyle=C.tick;ctx.fillText('soft skills',cx,cy+18);ctx.globalAlpha=1;}ctx.fillStyle=C.tick;ctx.font='600 10px '+FONT;ctx.textAlign='center';ctx.fillText('Share of all tracked-skill mentions',cx,cy+R+22);/* bars */bars.forEach((d,i)=>{const x0=bx,x1=lerp(x0,bx+(d[1]/maxV)*plotW,p),y=padT+i*rowH+rowH*0.22,bh=rowH*0.56;ctx.fillStyle=d[2];ctx.beginPath();ctx.roundRect(x0,y,Math.max(x1-x0,0),bh,2.5);ctx.fill();if(p>0.8){ctx.globalAlpha=(p-0.8)/0.2;ctx.fillStyle=C.ink;ctx.font='700 10px '+FONT;ctx.textAlign='left';ctx.fillText((d[1]/1e6).toFixed(2)+'M',x1+5,y+bh/2+4);ctx.globalAlpha=1;}});});};}
 
-function chart2(){const cv=document.getElementById('c2');let cancel;const bars=[['EXCEL',4932591,C.aqua],['COMMUNICATION',4256755,C.lime],['LEADERSHIP',2867241,C.lime],['COLLABORATION',1688149,C.lime],['PROBLEM SOLVING',1257686,C.lime],['INTERPERSONAL',1123590,C.lime],['MS OFFICE',954592,C.aqua],['TEAMWORK',810063,C.lime],['SAP',796663,C.aqua],['ADAPTABILITY',373145,C.lime],['CRITICAL THINKING',195546,C.lime],['DATA ANALYSIS',176601,C.aqua]];return function(){if(cancel)cancel();const{ctx,W,H}=ctxOf(cv);const donutW=W*0.36;const cx=donutW*0.52,cy=H*0.5,R=Math.min(donutW*0.4,H*0.4),r=R*0.58;const bx=donutW+10,padR=72,padT=8,padB=8;const plotW=W-bx-padR,plotH=H-padT-padB,rowH=plotH/bars.length,maxV=Math.ceil(bars[0][1]/1e6)*1e6;function grid(){ctx.clearRect(0,0,W,H);const ticks=Array.from({length:6},(_,i)=>i*1000000);ticks.forEach(v=>{const x=bx+(v/maxV)*plotW;ctx.strokeStyle=C.grid;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,padT);ctx.lineTo(x,padT+plotH);ctx.stroke();ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='center';ctx.fillText((v/1000000)+'M',x,padT+plotH+14);});ctx.fillStyle=C.ink;ctx.font='700 11px '+FONT;ctx.textAlign='left';ctx.fillText('Mentions per skill',bx,Math.max(18,padT+11));ctx.font='600 10px '+FONT;ctx.fillStyle=C.tick;ctx.fillText('Axis: millions of mentions',bx,Math.max(34,padT+28));}cancel=tween(1400,p=>{grid();const soft=0.634,segs=[[soft,C.lime,'Soft',63.4],[1-soft,C.aqua,'Hard',36.6]];let a0=-Math.PI/2;segs.forEach(s=>{const a1=a0+s[0]*Math.PI*2*p;ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,R,a0,a1);ctx.closePath();ctx.fillStyle=s[1];ctx.fill();a0=a1;});ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fillStyle='#F7FBFC';ctx.fill();if(p>0.5){ctx.globalAlpha=(p-0.5)/0.5;ctx.fillStyle=C.ink;ctx.textAlign='center';ctx.font='700 20px '+FONT;ctx.fillText('63.4%',cx,cy-2);ctx.font='600 11px '+FONT;ctx.fillStyle=C.tick;ctx.fillText('soft skills',cx,cy+16);ctx.globalAlpha=1;}ctx.fillStyle=C.tick;ctx.font='600 10px '+FONT;ctx.textAlign='center';ctx.fillText('Share of total skill mentions',cx,cy+R+22);bars.forEach((d,i)=>{const x0=bx,x1=lerp(x0,bx+(d[1]/maxV)*plotW,p),y=padT+i*rowH+rowH*0.22,bh=rowH*0.56;ctx.fillStyle=d[2];ctx.beginPath();ctx.roundRect(x0,y,Math.max(x1-x0,0),bh,2.5);ctx.fill();ctx.fillStyle=C.ink;ctx.font='600 9.5px '+FONT;ctx.textAlign='left';ctx.fillText(d[0],x0+4,y-2);if(p>0.8){ctx.globalAlpha=(p-0.8)/0.2;ctx.fillStyle=C.tick;ctx.font='600 9px '+FONT;ctx.fillText((d[1]/1e6).toFixed(2)+'M',x1+5,y+bh/2+3);ctx.globalAlpha=1;}});});};}
+function _unused_chart2(){}
 
-function chart3(){const cv=document.getElementById('c3');let cancel;const data=[['EXCEL',-8,1],['COMMUNICATION',-10,0],['LEADERSHIP',-3,0],['COLLABORATION',2,0],['PROBLEM SOLVING',-5,0],['INTERPERSONAL',-10,0],['MS OFFICE',-7,1],['TEAMWORK',-14,0],['SAP',3,1],['ADAPTABILITY',-11,0],['CRITICAL THINKING',8,0],['DATA ANALYSIS',21,1],['SALESFORCE',11,1],['TABLEAU',15,1],['MACHINE LEARNING',30,1],['POWER BI',26,1],['DEEP LEARNING',30,1],['TENSORFLOW',35,1],['PYTORCH',34,1],['NLP',33,1]];const colOf=d=>d[2]?C.aqua:C.lime;return function(){if(cancel)cancel();const{ctx,W,H}=ctxOf(cv);const padL=140,padR=70,padT=8,padB=26,n=data.length,absMax=45;const plotW=W-padL-padR,plotH=H-padT-padB,rowH=plotH/n,mid=padL+plotW/2;const xs=v=>padL+(v+absMax)/(absMax*2)*plotW;function grid(){ctx.clearRect(0,0,W,H);[-40,-20,0,20,40].forEach(v=>{const x=xs(v);ctx.strokeStyle=v===0?'rgba(34,64,77,.3)':C.grid;ctx.lineWidth=v===0?1.5:1;ctx.beginPath();ctx.moveTo(x,padT);ctx.lineTo(x,padT+plotH);ctx.stroke();ctx.fillStyle=C.tick;ctx.font='11px '+FONT;ctx.textAlign='center';ctx.fillText((v>0?'+':'')+v,x,padT+plotH+16);});ctx.fillStyle=C.tick;ctx.font='italic 10px '+FONT;ctx.textAlign='center';ctx.fillText('← entry-leaning     senior-leaning →',mid,H-2);ctx.font='600 11px '+FONT;ctx.textAlign='right';data.forEach((d,i)=>{ctx.fillStyle=colOf(d);ctx.fillText(d[0],padL-10,padT+i*rowH+rowH/2+4);});}cancel=tween(1200,p=>{grid();data.forEach((d,i)=>{const x0=mid,x1=lerp(x0,xs(d[1]),p),y=padT+i*rowH+rowH*0.2,bh=rowH*0.6;ctx.fillStyle=colOf(d);ctx.beginPath();if(d[1]>=0)ctx.roundRect(x0,y,Math.max(x1-x0,0),bh,3);else ctx.roundRect(x1,y,Math.max(x0-x1,0),bh,3);ctx.fill();if(p>0.85){ctx.globalAlpha=(p-0.85)/0.15;ctx.fillStyle=C.ink;ctx.font='700 10px '+FONT;const senior=d[1]+50;const lbl=d[1]>=0?(senior+'% sr'):((100-senior)+'% en');ctx.textAlign=d[1]>=0?'left':'right';ctx.fillText(lbl,d[1]>=0?x1+5:x1-5,y+bh/2+3);ctx.globalAlpha=1;}});});};}
+function chart3(){const cv=document.getElementById('c3');let cancel;/* Soft grouped at top (by overall frequency), then Hard (by overall frequency). value = senior_share - 50 (so >0 = senior-leaning, <0 = entry-leaning). */const data=[/* SOFT (top) */['COMMUNICATION',-10,0],['LEADERSHIP',-3,0],['COLLABORATION',2,0],['PROBLEM SOLVING',-5,0],['INTERPERSONAL',-10,0],['TEAMWORK',-14,0],['ADAPTABILITY',-11,0],['CRITICAL THINKING',8,0],['EMOTIONAL INTELLIGENCE',-3,0],/* divider goes here */['EXCEL',-8,1],['MS OFFICE',-7,1],['SAP',3,1],['DATA ANALYSIS',21,1],['SALESFORCE',11,1],['AI',-1,1],['TABLEAU',15,1],['MACHINE LEARNING',30,1],['POWER BI',26,1],['DEEP LEARNING',30,1],['TENSORFLOW',35,1],['PYTORCH',34,1],['NLP',33,1]];const dividerAfter=8;/* index of last soft skill */const colOf=d=>d[2]?C.aqua:C.lime;return function(){if(cancel)cancel();const{ctx,W,H}=ctxOf(cv);/* Wider gutter (gx) reserved on the left for vertical SOFT/HARD group titles, then row-label column */const gx=22;const padL=gx+158,padR=70,padT=8,padB=32,n=data.length,absMax=45;const plotW=W-padL-padR,plotH=H-padT-padB,rowH=plotH/n,mid=padL+plotW/2;const xs=v=>padL+(v+absMax)/(absMax*2)*plotW;function grid(){ctx.clearRect(0,0,W,H);/* axis ticks */[-40,-20,0,20,40].forEach(v=>{const x=xs(v);ctx.strokeStyle=v===0?'rgba(34,64,77,.3)':C.grid;ctx.lineWidth=v===0?1.5:1;ctx.beginPath();ctx.moveTo(x,padT);ctx.lineTo(x,padT+plotH);ctx.stroke();ctx.fillStyle=C.tick;ctx.font='11px '+FONT;ctx.textAlign='center';ctx.fillText((v>0?'+':'')+v+'pp',x,padT+plotH+14);});/* axis title */ctx.fillStyle=C.tick;ctx.font='italic 10px '+FONT;ctx.textAlign='center';ctx.fillText('← more entry-level    ·    more senior →',mid,padT+plotH+28);/* divider line between soft and hard groups */const dy=padT+(dividerAfter+1)*rowH;ctx.strokeStyle='rgba(34,64,77,.18)';ctx.setLineDash([4,4]);ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(0,dy);ctx.lineTo(padL+plotW,dy);ctx.stroke();ctx.setLineDash([]);/* vertical SOFT / HARD group titles in left gutter */const softMidY=padT+((dividerAfter+1)*rowH)/2;const hardMidY=padT+((dividerAfter+1)*rowH)+((n-dividerAfter-1)*rowH)/2;ctx.save();ctx.translate(gx*0.55,softMidY);ctx.rotate(-Math.PI/2);ctx.fillStyle=C.lime;ctx.font='800 11px '+FONT;ctx.textAlign='center';ctx.fillText('SOFT SKILLS',0,4);ctx.restore();ctx.save();ctx.translate(gx*0.55,hardMidY);ctx.rotate(-Math.PI/2);ctx.fillStyle=C.aqua;ctx.font='800 11px '+FONT;ctx.textAlign='center';ctx.fillText('HARD SKILLS',0,4);ctx.restore();/* row labels (right-aligned) */ctx.font='600 10.5px '+FONT;ctx.textAlign='right';data.forEach((d,i)=>{ctx.fillStyle=colOf(d);ctx.fillText(d[0],padL-10,padT+i*rowH+rowH/2+4);});}cancel=tween(1300,p=>{grid();data.forEach((d,i)=>{const x0=mid,x1=lerp(x0,xs(d[1]),p),y=padT+i*rowH+rowH*0.22,bh=rowH*0.56;ctx.fillStyle=colOf(d);ctx.beginPath();if(d[1]>=0)ctx.roundRect(x0,y,Math.max(x1-x0,0),bh,3);else ctx.roundRect(x1,y,Math.max(x0-x1,0),bh,3);ctx.fill();if(p>0.85){ctx.globalAlpha=(p-0.85)/0.15;ctx.fillStyle=C.ink;ctx.font='700 10px '+FONT;const senior=d[1]+50;const lbl=d[1]>=0?(senior+'% sr'):((100-senior)+'% en');ctx.textAlign=d[1]>=0?'left':'right';ctx.fillText(lbl,d[1]>=0?x1+5:x1-5,y+bh/2+3);ctx.globalAlpha=1;}});});};}
 
 function chart4(){const cv=document.getElementById('c4');let cancel;const entry=[55,58,88,128,168,155,138,152,178,208,200,202,208,222,246,234,252,242,258,243,242,242,232,220,238,265,310,360,420,465,475,478,489,468,381,396,452,313].map(v=>v*1000);const senior=[39,41,52,75,100,98,90,98,113,160,150,150,160,178,193,183,197,191,200,182,180,178,176,170,165,176,202,232,300,360,400,422,440,425,330,322,350,245].map(v=>v*1000);return function(){if(cancel)cancel();const{ctx,W,H}=ctxOf(cv);const padL=58,padR=14,padT=14,padB=24;const plotW=W-padL-padR,plotH=H-padT-padB,nP=entry.length,maxV=500000;const xp=i=>padL+(i/(nP-1))*plotW,yp=v=>padT+plotH-(v/maxV)*plotH;function path(vals){const pa=new Path2D();vals.forEach((v,i)=>{const x=xp(i),y=yp(v);if(i===0)pa.moveTo(x,y);else{const cx=(xp(i-1)+x)/2;pa.bezierCurveTo(cx,yp(vals[i-1]),cx,y,x,y);}});return pa;}function grid(){ctx.clearRect(0,0,W,H);for(let v=0;v<=500000;v+=100000){const y=yp(v);ctx.strokeStyle=C.grid;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(padL+plotW,y);ctx.stroke();ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='right';ctx.fillText((v/1000)+'K',padL-6,y+3);}['2021','2022','2025','2026'].forEach((lb,k)=>{const i=[0,12,25,35][k];ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='center';ctx.fillText(lb,xp(i),H-6);});}cancel=tween(1900,p=>{grid();const clipW=plotW*p;ctx.save();ctx.beginPath();ctx.rect(padL,0,clipW,H);ctx.clip();[[senior,C.blue,'rgba(40,95,116,.12)',true],[entry,C.aqua,'rgba(0,192,202,.16)',false]].forEach(([vals,col,fc])=>{const pa=path(vals);const fp=new Path2D(pa);fp.lineTo(xp(nP-1),padT+plotH);fp.lineTo(xp(0),padT+plotH);fp.closePath();ctx.fillStyle=fc;ctx.fill(fp);ctx.strokeStyle=col;ctx.lineWidth=3;ctx.lineJoin='round';ctx.stroke(pa);});ctx.restore();});};}
 
 function chart5(){const cv=document.getElementById('c5');let cancel;const N=38;const mk=(start,end,wob)=>Array.from({length:N},(_,i)=>{const t=i/(N-1);return start+(end-start)*t+Math.sin(i/3)*wob;});const series=[{n:'EXCEL',v:mk(55.5,53,1),c:C.aqua,w:2.5},{n:'COMMUNICATION',v:mk(57,45,1.2),c:C.lime,w:3.5},{n:'LEADERSHIP',v:mk(33,32,1),c:'#E07A5F',w:2},{n:'DEEP_LEARNING/AI',v:mk(9.5,20,1.5),c:C.yellow,w:3.5},{n:'TENSORFLOW',v:mk(16,13,.8),c:C.jade,w:1.8},{n:'MS_OFFICE',v:mk(5,11,1),c:C.azure,w:2},{n:'ADAPTABILITY',v:mk(13,9,.6),c:C.teal,w:1.6}];return function(){if(cancel)cancel();const{ctx,W,H}=ctxOf(cv);const padL=46,padR=14,padT=12,padB=24;const plotW=W-padL-padR,plotH=H-padT-padB,maxV=60;const xp=i=>padL+(i/(N-1))*plotW,yp=v=>padT+plotH-(v/maxV)*plotH;function path(vals){const pa=new Path2D();vals.forEach((v,i)=>{const x=xp(i),y=yp(v);if(i===0)pa.moveTo(x,y);else{const cx=(xp(i-1)+x)/2;pa.bezierCurveTo(cx,yp(vals[i-1]),cx,y,x,y);}});return pa;}function grid(){ctx.clearRect(0,0,W,H);for(let v=0;v<=60;v+=20){const y=yp(v);ctx.strokeStyle=C.grid;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(padL+plotW,y);ctx.stroke();ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='right';ctx.fillText(v+'%',padL-6,y+3);}['2021','2022','2025','2026'].forEach((lb,k)=>{const i=[0,12,25,35][k];ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='center';ctx.fillText(lb,xp(i),H-6);});}cancel=tween(2050,p=>{grid();const clipW=plotW*p;ctx.save();ctx.beginPath();ctx.rect(padL,0,clipW,H);ctx.clip();series.forEach(s=>{ctx.strokeStyle=s.c;ctx.lineWidth=s.w;ctx.lineJoin='round';ctx.lineCap='round';ctx.stroke(path(s.v));});ctx.restore();if(p>0.9){ctx.globalAlpha=(p-0.9)/0.1;ctx.font='700 10px '+FONT;ctx.textAlign='right';[['COMMUNICATION',1,C.lime],['AI / ML',3,C.yellow],['EXCEL',0,C.aqua]].forEach(([lb,si])=>{const s=series[si];ctx.fillStyle=s.c;ctx.fillText(lb,xp(N-1)-6,yp(s.v[N-1])-5);});ctx.globalAlpha=1;}});};}
 
-function chart6(){const cv=document.getElementById('c6');let cancel;const hard=[100,105,150,305,300,275,300,360,432,410,415,460,490,515,490,525,500,525,560,940,1025,1055,1090,1040,840,860,950,660];const soft=[100,103,148,278,272,232,265,318,378,358,372,395,445,425,418,460,440,470,500,820,888,915,955,920,725,728,815,571];const N=hard.length;return function(){if(cancel)cancel();const{ctx,W,H}=ctxOf(cv);const padL=52,padR=72,padT=14,padB=24;const plotW=W-padL-padR,plotH=H-padT-padB,maxV=1150;const xp=i=>padL+(i/(N-1))*plotW,yp=v=>padT+plotH-(v/maxV)*plotH;function path(vals){const pa=new Path2D();vals.forEach((v,i)=>{const x=xp(i),y=yp(v);if(i===0)pa.moveTo(x,y);else{const cx=(xp(i-1)+x)/2;pa.bezierCurveTo(cx,yp(vals[i-1]),cx,y,x,y);}});return pa;}function grid(){ctx.clearRect(0,0,W,H);for(let v=200;v<=1000;v+=200){const y=yp(v);ctx.strokeStyle=C.grid;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(padL+plotW,y);ctx.stroke();ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='right';ctx.fillText(v,padL-6,y+3);}['2021','2022','2025','2026'].forEach((lb,k)=>{const i=[0,9,19,26][k];ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='center';ctx.fillText(lb,xp(i),H-6);});}cancel=tween(2050,p=>{grid();const clipW=plotW*p;ctx.save();ctx.beginPath();ctx.rect(padL,0,clipW,H);ctx.clip();const band=new Path2D();hard.forEach((v,i)=>{const x=xp(i),y=yp(v);i===0?band.moveTo(x,y):band.lineTo(x,y);});for(let i=N-1;i>=0;i--){band.lineTo(xp(i),yp(soft[i]));}band.closePath();ctx.fillStyle='rgba(0,192,202,.16)';ctx.fill(band);ctx.strokeStyle=C.lime;ctx.lineWidth=2.5;ctx.setLineDash([7,5]);ctx.stroke(path(soft));ctx.setLineDash([]);ctx.strokeStyle=C.turq;ctx.lineWidth=3.5;ctx.lineJoin='round';ctx.stroke(path(hard));ctx.restore();if(p>0.92){ctx.globalAlpha=(p-0.92)/0.08;ctx.font='700 12px '+FONT;ctx.textAlign='left';ctx.fillStyle=C.turq;ctx.fillText('6.60×',xp(N-1)+4,yp(hard[N-1])+4);ctx.fillStyle=C.forest;ctx.fillText('5.71×',xp(N-1)+4,yp(soft[N-1])+4);ctx.globalAlpha=1;}});};}
+function chart6(){const cv=document.getElementById('c6');let cancel;const hard=[100,105,150,305,300,275,300,360,432,410,415,460,490,515,490,525,500,525,560,940,1025,1055,1090,1040,840,860,950,660];const soft=[100,103,148,278,272,232,265,318,378,358,372,395,445,425,418,460,440,470,500,820,888,915,955,920,725,728,815,571];const N=hard.length;return function(){if(cancel)cancel();const{ctx,W,H}=ctxOf(cv);const padL=64,padR=72,padT=14,padB=32;const plotW=W-padL-padR,plotH=H-padT-padB,maxV=1150;const xp=i=>padL+(i/(N-1))*plotW,yp=v=>padT+plotH-(v/maxV)*plotH;function path(vals){const pa=new Path2D();vals.forEach((v,i)=>{const x=xp(i),y=yp(v);if(i===0)pa.moveTo(x,y);else{const cx=(xp(i-1)+x)/2;pa.bezierCurveTo(cx,yp(vals[i-1]),cx,y,x,y);}});return pa;}function grid(){ctx.clearRect(0,0,W,H);for(let v=200;v<=1000;v+=200){const y=yp(v);ctx.strokeStyle=C.grid;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(padL+plotW,y);ctx.stroke();ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='right';ctx.fillText(v,padL-6,y+3);}/* y-axis title */ctx.save();ctx.translate(14,padT+plotH/2);ctx.rotate(-Math.PI/2);ctx.fillStyle=C.tick;ctx.font='italic 10px '+FONT;ctx.textAlign='center';ctx.fillText('Index (Jan-2021 = 100)',0,0);ctx.restore();/* x-axis ticks */['2021','2022','2025','2026'].forEach((lb,k)=>{const i=[0,9,19,26][k];ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='center';ctx.fillText(lb,xp(i),H-14);});/* x-axis title */ctx.fillStyle=C.tick;ctx.font='italic 10px '+FONT;ctx.textAlign='center';ctx.fillText('Month',padL+plotW/2,H-2);}cancel=tween(2050,p=>{grid();const clipW=plotW*p;ctx.save();ctx.beginPath();ctx.rect(padL,0,clipW,H);ctx.clip();const band=new Path2D();hard.forEach((v,i)=>{const x=xp(i),y=yp(v);i===0?band.moveTo(x,y):band.lineTo(x,y);});for(let i=N-1;i>=0;i--){band.lineTo(xp(i),yp(soft[i]));}band.closePath();ctx.fillStyle='rgba(0,192,202,.16)';ctx.fill(band);ctx.strokeStyle=C.lime;ctx.lineWidth=2.5;ctx.setLineDash([7,5]);ctx.stroke(path(soft));ctx.setLineDash([]);ctx.strokeStyle=C.turq;ctx.lineWidth=3.5;ctx.lineJoin='round';ctx.stroke(path(hard));ctx.restore();if(p>0.92){ctx.globalAlpha=(p-0.92)/0.08;ctx.font='700 12px '+FONT;ctx.textAlign='left';ctx.fillStyle=C.turq;ctx.fillText('Hard 6.60×',xp(N-1)+4,yp(hard[N-1])+4);ctx.fillStyle=C.forest;ctx.fillText('Soft 5.71×',xp(N-1)+4,yp(soft[N-1])+4);ctx.globalAlpha=1;}});};}
 
 function chart7(){const cv=document.getElementById('c7');let cancel;const data=[['High School',61,88],['Associate',66,89],["Bachelor's",73,85],["Master's",63,89],['PhD',65,91]];return function(){if(cancel)cancel();const{ctx,W,H}=ctxOf(cv);const padL=44,padR=16,padT=18,padB=42,n=data.length;const plotW=W-padL-padR,plotH=H-padT-padB,grpW=plotW/n,maxV=100;const yp=v=>padT+plotH-(v/maxV)*plotH;function grid(){ctx.clearRect(0,0,W,H);for(let v=0;v<=100;v+=20){const y=yp(v);ctx.strokeStyle=C.grid;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(padL+plotW,y);ctx.stroke();ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='right';ctx.fillText(v+'%',padL-6,y+3);}}cancel=tween(1200,p=>{grid();data.forEach((d,i)=>{const cx=padL+i*grpW+grpW/2,bw=grpW*0.3,gap=bw*0.18;[[d[1],C.aqua,-1],[d[2],C.lime,1]].forEach(([v,col,side])=>{const bh=(v/maxV)*plotH*p,x=cx+side*gap+(side<0?-bw:0),y=padT+plotH-bh;ctx.fillStyle=col;ctx.beginPath();ctx.roundRect(x,y,bw,bh,4);ctx.fill();if(p>0.8){ctx.globalAlpha=(p-0.8)/0.2;ctx.fillStyle=C.ink;ctx.font='700 11px '+FONT;ctx.textAlign='center';ctx.fillText(v+'%',x+bw/2,y-5);ctx.globalAlpha=1;}});ctx.fillStyle=C.ink;ctx.font='600 11px '+FONT;ctx.textAlign='center';ctx.fillText(d[0],cx,padT+plotH+18);});});};}
 
+function chart7b(){const cv=document.getElementById('c7b');let cancel;
+/* 28 monthly points (3-mo rolling avg), 2021-01 → 2026-04, modeled from PDF page 29 */
+const N=28;
+const series=[
+  {n:'High School',v:[88.5,88.8,89.0,87.6,86.8,87.0,87.5,87.6,87.6,87.6,88.1,88.2,88.4,89.0,89.0,88.7,88.5,88.5,89.0,89.0,89.0,89.4,89.0,89.5,89.4,90.2,89.8,90.0],c:'#BBD153',w:2.3},
+  {n:'Associate',  v:[88.6,89.0,88.8,89.0,89.4,88.0,89.0,89.5,90.2,90.4,90.0,89.4,88.8,88.8,88.8,88.5,88.5,88.0,88.5,89.7,89.8,89.6,89.0,89.8,90.1,87.2,89.4,87.0],c:C.jade,w:2.3},
+  {n:"Bachelor's", v:[91.6,91.8,91.5,90.2,89.9,89.8,90.5,90.6,90.6,90.5,90.4,90.4,90.6,90.7,90.7,90.7,90.6,90.0,88.0,82.0,78.0,77.5,79.0,81.0,82.5,82.3,79.0,81.5],c:C.turq,w:3.5},
+  {n:"Master's",   v:[90.7,90.6,90.0,89.6,87.6,87.2,87.0,87.5,88.7,88.8,88.4,88.3,88.2,88.3,88.6,88.8,89.0,88.8,88.0,88.0,88.7,90.4,90.0,89.6,88.7,88.7,89.7,89.6],c:C.blue,w:2.3},
+  {n:'PhD',        v:[86.0,87.0,89.0,89.1,88.5,87.0,88.7,89.6,91.0,91.2,90.4,89.6,89.6,89.6,89.8,90.0,90.1,90.2,89.3,88.5,90.8,91.5,91.6,90.0,92.6,92.0,90.0,91.9],c:'#E07A5F',w:2.3}
+];
+return function(){if(cancel)cancel();const{ctx,W,H}=ctxOf(cv);const padL=52,padR=92,padT=14,padB=32;const plotW=W-padL-padR,plotH=H-padT-padB,vMin=75,vMax=93;const xp=i=>padL+(i/(N-1))*plotW,yp=v=>padT+plotH-((v-vMin)/(vMax-vMin))*plotH;function path(vals){const pa=new Path2D();vals.forEach((v,i)=>{const x=xp(i),y=yp(v);if(i===0)pa.moveTo(x,y);else{const cx=(xp(i-1)+x)/2;pa.bezierCurveTo(cx,yp(vals[i-1]),cx,y,x,y);}});return pa;}function grid(){ctx.clearRect(0,0,W,H);for(let v=78;v<=92;v+=2){const y=yp(v);ctx.strokeStyle=C.grid;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(padL+plotW,y);ctx.stroke();ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='right';ctx.fillText(v+'%',padL-6,y+3);}/* x ticks */['2021','2022','2025','2026'].forEach((lb,k)=>{const i=[0,9,19,26][k];ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='center';ctx.fillText(lb,xp(i),H-14);});/* x axis title */ctx.fillStyle=C.tick;ctx.font='italic 10px '+FONT;ctx.textAlign='center';ctx.fillText('Month (3-mo rolling avg)',padL+plotW/2,H-2);/* y axis title */ctx.save();ctx.translate(12,padT+plotH/2);ctx.rotate(-Math.PI/2);ctx.fillStyle=C.tick;ctx.font='italic 10px '+FONT;ctx.textAlign='center';ctx.fillText('% of postings mentioning ≥1 soft skill',0,0);ctx.restore();}cancel=tween(2050,p=>{grid();const clipW=plotW*p;ctx.save();ctx.beginPath();ctx.rect(padL,0,clipW,H);ctx.clip();series.forEach(s=>{ctx.strokeStyle=s.c;ctx.lineWidth=s.w;ctx.lineJoin='round';ctx.lineCap='round';ctx.stroke(path(s.v));});ctx.restore();if(p>0.92){ctx.globalAlpha=(p-0.92)/0.08;ctx.font='700 10px '+FONT;ctx.textAlign='left';series.forEach(s=>{ctx.fillStyle=s.c;ctx.fillText(s.n,xp(N-1)+5,yp(s.v[N-1])+4);});ctx.globalAlpha=1;}});};}
+
 function chart8(){const cv=document.getElementById('c8');let cancel;const data=[['No tracked\nskill',35,C.grey],['Soft only',46,C.lime],['Hard only',35,C.aqua],['Hard + Soft',49,C.jade]];return function(){if(cancel)cancel();const{ctx,W,H}=ctxOf(cv);const padL=52,padR=20,padT=20,padB=48,n=data.length;const plotW=W-padL-padR,plotH=H-padT-padB,colW=plotW/n,maxV=60;const yp=v=>padT+plotH-(v/maxV)*plotH;function grid(){ctx.clearRect(0,0,W,H);for(let v=0;v<=60;v+=20){const y=yp(v);ctx.strokeStyle=C.grid;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(padL+plotW,y);ctx.stroke();ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='right';ctx.fillText('$'+v+'K',padL-6,y+3);}const by=yp(46);ctx.strokeStyle='rgba(34,64,77,.3)';ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(padL,by);ctx.lineTo(padL+plotW,by);ctx.stroke();ctx.setLineDash([]);}cancel=tween(1200,p=>{grid();data.forEach((d,i)=>{const bh=(d[1]/maxV)*plotH*p,x=padL+i*colW+colW*0.18,bw=colW*0.64,y=padT+plotH-bh;ctx.fillStyle=d[2];ctx.beginPath();ctx.roundRect(x,y,bw,bh,5);ctx.fill();if(p>0.7){ctx.globalAlpha=(p-0.7)/0.3;ctx.fillStyle=C.ink;ctx.font='700 14px '+FONT;ctx.textAlign='center';ctx.fillText('$'+d[1]+'K',x+bw/2,y-7);ctx.globalAlpha=1;}ctx.fillStyle=C.ink;ctx.font='600 11px '+FONT;ctx.textAlign='center';const lines=d[0].split('\n');lines.forEach((ln,li)=>ctx.fillText(ln,padL+i*colW+colW/2,padT+plotH+18+li*13));});});};}
 
-function chart9(){const cv=document.getElementById('c9');let cancel;const data=[['Marketing',2.1],['Finance',1.3],['Operations',1.0],['Admin',0.9],['Scientist',0.9],['Sales',0.7],['Engineer',0.6]];return function(){if(cancel)cancel();const{ctx,W,H}=ctxOf(cv);const padL=118,padR=70,padT=12,padB=28,n=data.length;const plotW=W-padL-padR,plotH=H-padT-padB,rowH=plotH/n,xMax=2.6;const xs=v=>padL+(v/xMax)*plotW;function grid(){ctx.clearRect(0,0,W,H);for(let v=0;v<=2.5;v+=0.5){const x=xs(v);ctx.strokeStyle=C.grid;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,padT);ctx.lineTo(x,padT+plotH);ctx.stroke();ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='center';ctx.fillText('+'+v.toFixed(1),x,padT+plotH+16);}ctx.fillStyle=C.tick;ctx.font='italic 10px '+FONT;ctx.textAlign='center';ctx.fillText('Change in AI-skill demand (percentage points), 2021 → 2026',padL+plotW/2,H-2);ctx.fillStyle=C.ink;ctx.font='600 12px '+FONT;ctx.textAlign='right';data.forEach((d,i)=>ctx.fillText(d[0],padL-10,padT+i*rowH+rowH/2+4));}cancel=tween(1200,p=>{grid();data.forEach((d,i)=>{const x0=xs(0),x1=lerp(x0,xs(d[1]),p),y=padT+i*rowH+rowH*0.2,bh=rowH*0.6;const fill=d[0]==='Marketing' && x1>x0 ? (()=>{const g=ctx.createLinearGradient(x0,y,x1,y);g.addColorStop(0,C.turq);g.addColorStop(1,C.lime);return g;})() : C.aqua;ctx.fillStyle=fill;ctx.beginPath();ctx.roundRect(x0,y,Math.max(x1-x0,0),bh,4);ctx.fill();if(d[0]==='Marketing'&&x1>x0){ctx.strokeStyle='rgba(34,64,77,.08)';ctx.lineWidth=1;ctx.stroke();}if(p>0.85){ctx.globalAlpha=(p-0.85)/0.15;ctx.fillStyle=C.ink;ctx.font='700 12px '+FONT;ctx.textAlign='left';ctx.fillText('+'+d[1].toFixed(1)+' pp',x1+8,y+bh/2+4);ctx.globalAlpha=1;}});});};}
+function chart9(){const cv=document.getElementById('c9');let cancel;const data=[['Marketing',2.1],['Finance',1.3],['Operations',1.0],['Admin',0.9],['Scientist',0.9],['Sales',0.7],['Engineer',0.6]];return function(){if(cancel)cancel();const{ctx,W,H}=ctxOf(cv);const padL=118,padR=70,padT=12,padB=28,n=data.length;const plotW=W-padL-padR,plotH=H-padT-padB,rowH=plotH/n,xMax=2.6;const xs=v=>padL+(v/xMax)*plotW;function grid(){ctx.clearRect(0,0,W,H);for(let v=0;v<=2.5;v+=0.5){const x=xs(v);ctx.strokeStyle=C.grid;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,padT);ctx.lineTo(x,padT+plotH);ctx.stroke();ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='center';ctx.fillText('+'+v.toFixed(1),x,padT+plotH+16);}ctx.fillStyle=C.tick;ctx.font='italic 10px '+FONT;ctx.textAlign='center';ctx.fillText('Change in AI-skill demand (percentage points), 2021 → 2026',padL+plotW/2,H-2);ctx.fillStyle=C.ink;ctx.font='600 12px '+FONT;ctx.textAlign='right';data.forEach((d,i)=>ctx.fillText(d[0],padL-10,padT+i*rowH+rowH/2+4));}cancel=tween(1200,p=>{grid();data.forEach((d,i)=>{const x0=xs(0),x1=lerp(x0,xs(d[1]),p),y=padT+i*rowH+rowH*0.2,bh=rowH*0.6;const fill=d[0]==='Marketing' && x1>x0 ? (()=>{const g=ctx.createLinearGradient(x0,y,x1,y);/* soft gradient: aqua → pale lime with mid-tone */g.addColorStop(0,'rgba(0,192,202,.85)');g.addColorStop(0.55,'rgba(70,177,123,.80)');g.addColorStop(1,'rgba(143,196,64,.75)');return g;})() : C.aqua;ctx.fillStyle=fill;ctx.beginPath();ctx.roundRect(x0,y,Math.max(x1-x0,0),bh,4);ctx.fill();if(p>0.85){ctx.globalAlpha=(p-0.85)/0.15;ctx.fillStyle=C.ink;ctx.font='700 12px '+FONT;ctx.textAlign='left';ctx.fillText('+'+d[1].toFixed(1)+' pp',x1+8,y+bh/2+4);ctx.globalAlpha=1;}});});};}
 
-const PLAYS={1:chart1(),2:chart2(),3:chart3(),4:chart4(),5:chart5(),6:chart6(),7:chart7(),8:chart8(),9:chart9()};
+const PLAYS={1:chart2(),2:chart3(),3:chart4(),4:chart5(),5:chart6(),6:chart7(),7:chart7b(),8:chart8(),9:chart9()};
 const slides=[...document.querySelectorAll('.slide')];
 const N=slides.length;let cur=0,playing=true,timer=null;const DUR=8200;
 const dotsBox=document.getElementById('dots');
 slides.forEach((_,k)=>{const d=document.createElement('div');d.className='dot'+(k===0?' on':'');d.onclick=()=>{showSlide(k);resetTimer();};dotsBox.appendChild(d);});
 const dots=[...document.querySelectorAll('.dot')];
-function showSlide(n){const prev=cur;cur=(n+N)%N;if(prev===cur&&prev!==0)return;slides[prev].classList.remove('active');slides[cur].classList.add('active');dots.forEach((d,k)=>d.classList.toggle('on',k===cur));document.getElementById('progbar').style.width=((cur/(N-1))*100)+'%';document.getElementById('pagenum').textContent=String(cur+1).padStart(2,'0')+' / '+String(N).padStart(2,'0');document.getElementById('topbar').style.display=(cur===0)?'none':'flex';document.querySelectorAll('.callout').forEach(c=>c.classList.remove('show'));if(cur===5)setTimeout(()=>document.getElementById('call5')?.classList.add('show'),1300);if(cur===6)setTimeout(()=>document.getElementById('call6')?.classList.add('show'),1300);if(PLAYS[cur])setTimeout(()=>PLAYS[cur](),200);}
+function showSlide(n){const prev=cur;cur=(n+N)%N;if(prev===cur&&prev!==0)return;slides[prev].classList.remove('active');slides[cur].classList.add('active');dots.forEach((d,k)=>d.classList.toggle('on',k===cur));document.getElementById('progbar').style.width=((cur/(N-1))*100)+'%';document.getElementById('pagenum').textContent=String(cur+1).padStart(2,'0')+' / '+String(N).padStart(2,'0');document.getElementById('topbar').style.display=(cur===0)?'none':'flex';document.querySelectorAll('.callout').forEach(c=>c.classList.remove('show'));if(cur===4)setTimeout(()=>document.getElementById('call5')?.classList.add('show'),1300);if(cur===5)setTimeout(()=>document.getElementById('call6')?.classList.add('show'),1300);if(PLAYS[cur])setTimeout(()=>PLAYS[cur](),200);}
 function next(){showSlide(cur+1);resetTimer();}
 function prev(){showSlide(cur-1);resetTimer();}
 function resetTimer(){clearTimeout(timer);if(!playing)return;timer=setTimeout(()=>{if(cur<N-1)next();else{playing=false;document.getElementById('playbtn').textContent='▶ Play';}},DUR);}
