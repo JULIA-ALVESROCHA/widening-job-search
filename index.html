@@ -218,7 +218,7 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
   <section class="slide" data-i="1">
     <div class="eyebrow rise d1"><span class="num">01</span> The Mix <span class="rule"></span></div>
     <h1 class="title rise d1">Soft skills make up <span class="pop">two-thirds</span> of all skill demand.</h1>
-    <p class="subtitle rise d2">While credential inflation once centred on formal degrees, the focus has pivoted to skills. In this new landscape, human-centric capabilities dominate market demand and act as the common language of the labour market.</p>
+    <p class="subtitle rise d2">While credential inflation once centred on formal degrees, the focus has pivoted to skills. The human-centric capabilities dominate market demand and act as the common language of the labour market.</p>
     <div class="body rise d3">
       <div class="chart-stage"><canvas id="c2" class="chart"></canvas></div>
       <div class="readout glass">
@@ -239,9 +239,29 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
     <div class="source-note">Donut: share of all tracked-skill mentions · Bars: skilled postings per skill (millions) </div>
   </section>
 
-  <!-- ░░ 2 · SENIORITY SPLIT (was 03) ░░ -->
+  <!-- ░░ 2 · NEW: HARD + SOFT CO-OCCURRENCE ░░ -->
   <section class="slide" data-i="2">
-    <div class="eyebrow rise d1"><span class="num">02</span> Seniority <span class="rule"></span></div>
+    <div class="eyebrow rise d1"><span class="num">02</span> The Stack <span class="rule"></span></div>
+    <h1 class="title rise d1">Technical roles rarely stand alone — <span class="pop">two in three</span> also ask for soft skills.</h1>
+    <p class="subtitle rise d2">Hiring trends point toward a stackable skills model. In practice, this structure treats hard skills as the core requirement while soft skills serve as an fundamental layer for evaluating workplace fit.</p>
+    <div class="body rise d3">
+      <div class="chart-stage"><canvas id="cCo" class="chart"></canvas></div>
+      <div class="readout glass">
+        <span class="lead">The stackable model</span>
+        <p>Two in three technical postings (66.9%) also demand at least one human-centric skill — only a third ask for hard skills alone. The pattern peaks among analytical and AI roles: <b style="color:var(--ink)">NLP (83%)</b>, <b style="color:var(--ink)">Data Analysis (82%)</b> and <b style="color:var(--ink)">Machine Learning (77%)</b> nearly always pair technical depth with communication or collaboration.</p>
+      </div>
+    </div>
+    <div class="legend rise d3">
+      <span><i style="background:var(--jade)"></i>Also lists ≥1 soft skill</span>
+      <span><i style="background:var(--sky)"></i>Hard skill only</span>
+    </div>
+    <div class="source">Source: <b>Job postings master dataset (Revelio Labs)</b> | Analysis restricted to postings with ≥1 tracked skill | Skills extracted via keyword matching (binary presence) | Salary outliers removed via IQR×1.5</div>
+    <div class="source-note">Columns: within each hard skill, share of postings that also list ≥1 soft skill · 12 highest-volume tracked hard skills shown</div>
+  </section>
+
+  <!-- ░░ 3 · SENIORITY SPLIT (was 03) ░░ -->
+  <section class="slide" data-i="3">
+    <div class="eyebrow rise d1"><span class="num">03</span> Seniority <span class="rule"></span></div>
     <h1 class="title rise d1">Technical skills lean <span class="accent">senior</span>; soft skills skew <span class="pop">entry-level</span>.</h1>
     <p class="subtitle rise d2">Driven by AI's capacity to automate junior tasks, the credential market has split into a clear talent bifurcation. High formal barriers remain strictly locked in place for scarce, senior-level technical roles, while entry-level positions have lowered requirements to focus heavily on foundational human capabilities.</p>
     <div class="body rise d3">
@@ -264,17 +284,17 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
   </section>
 
   <!-- ░░ 3 · ENTRY TRAILS SENIOR (was 04) ░░ -->
-  <section class="slide" data-i="3">
-    <div class="eyebrow rise d1"><span class="num">03</span> Who's Hiring <span class="rule"></span></div>
+  <section class="slide" data-i="4">
+    <div class="eyebrow rise d1"><span class="num">04</span> Who's Hiring <span class="rule"></span></div>
     <h1 class="title rise d1">Entry-level demand has <span class="accent">trailed senior</span> throughout the period.</h1>
-    <p class="subtitle rise d2">In every single month from January 2021 to April 2026, total skill mentions in senior-tagged postings exceeded entry-level ones — and the gap widened from ~30K mentions/month at the start to roughly 100K by 2025-09. Hiring volume rose for both, but the early-career deficit held.</p>
+    <p class="subtitle rise d2">Early-career hiring has consistently lagged behind senior demand — and rather than closing over time, the gap kept widening even as the whole market expanded. The door for newcomers opened wider, but never fast enough to catch up.</p>
     <div class="body rise d3">
       <div class="chart-stage"><canvas id="c4" class="chart"></canvas></div>
       <div class="readout glass">
         <span class="lead">The persistent gap</span>
-        <p>Entry-level (lighter line) sits below senior demand in every month from 2021 to 2026. During this period the total skill mentions in senior-tagged postings exceeded entry-level ones — and the gap widened from ~30K mentions/month at the start to roughly 100K by 2025-09. Hiring volume rose for both, but the early-career deficit held.</p>
+        <p>Entry-level demand (lighter line) sits below senior in every month from 2021 to 2026, and the gap only widened as hiring grew.</p>
         <div class="divline"></div>
-        <div class="note">Read this as <b>absolute demand volume</b> — how many postings mention skills — not the within-job proportion shown on the trend slides.</div>
+        <div class="note">Data suggests entry-level demand <b>amplifies market shifts</b>, swinging wider than senior hiring in both directions. This higher sensitivity accounts for its growth advantage during the expansion.</div>
       </div>
     </div>
     <div class="legend rise d3">
@@ -286,8 +306,8 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
   </section>
 
   <!-- ░░ 4 · COMMUNICATION SLIPS / AI CLIMBS (was 05) ░░ -->
-  <section class="slide" data-i="4">
-    <div class="eyebrow rise d1"><span class="num">04</span> The Shift <span class="rule"></span></div>
+  <section class="slide" data-i="5">
+    <div class="eyebrow rise d1"><span class="num">05</span> The Shift <span class="rule"></span></div>
     <h1 class="title rise d1">Communication demand slips as <span class="pop">AI skills climb</span>.</h1>
     <p class="subtitle rise d2">As AI skills grow more capable of automating routine tasks and lifting on-the-job performance, employers increasingly screen for them — and that rising demand is steadily reshaping the skill mix away from a once-dominant reliance on communication alone.</p>
     <div class="body rise d3">
@@ -297,16 +317,14 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
       </div>
       <div class="readout glass">
         <span class="lead">Reading the trend</span>
-        <p>Communication's share of skilled postings eased from ~57% in 2021 to ~45% in 2026 — a 12-point drop. Meanwhile AI-related skills (AI, ML, Deep Learning) climbed from a near-zero base into double digits in postings that mention them. The mix is moving, not just the volume.</p>
-        <div class="divline"></div>
-        <div class="note">Caveat for the room: there is a <b>fixed set of soft skills</b> but an <b>ever-growing list of hard skills</b>. Some hard-skill rise reflects new tools entering the panel — not only deeper demand per job.</div>
+        <p>Communication's share of skilled postings eased from ~57% in 2021 to ~45% in 2026 — a 12-point drop. Meanwhile, AI-related skills climbed, becoming the fastest-growing part of the mix. The composition is shifting, not just the volume.</p>
       </div>
     </div>
     <div class="legend rise d3">
       <span><i style="background:var(--aqua)"></i>Excel</span>
       <span><i style="background:var(--lime)"></i>Communication</span>
       <span><i style="background:#E07A5F"></i>Leadership</span>
-      <span><i style="background:var(--yellow)"></i>AI / Deep Learning</span>
+      <span><i style="background:var(--yellow)"></i>AI / ML</span>
       <span><i style="background:var(--jade)"></i>TensorFlow</span>
       <span><i style="background:var(--azure)"></i>MS Office</span>
       <span><i style="background:var(--teal)"></i>Adaptability</span>
@@ -316,8 +334,8 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
   </section>
 
   <!-- ░░ 5 · HARD OUTPACES SOFT (was 06) ░░ -->
-  <section class="slide" data-i="5">
-    <div class="eyebrow rise d1"><span class="num">05</span> The Trend <span class="rule"></span></div>
+  <section class="slide" data-i="6">
+    <div class="eyebrow rise d1"><span class="num">06</span> The Trend <span class="rule"></span></div>
     <h1 class="title rise d1">Hard-skill demand has <span class="accent">outpaced</span> soft over time.</h1>
     <p class="subtitle rise d2">As employers drop degree requirements and lean on skills as the primary screening mechanism, demand for hard skills is accelerating at a relentless pace — outrunning soft-skill growth and resetting the bar candidates must clear.</p>
     <div class="body rise d3">
@@ -333,7 +351,7 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
         </div>
         <div class="divline"></div>
         <p>From January 2021 to April 2026, total hard-skill mentions grew +560% while soft-skill mentions grew +471% — a 1.16× gap that opened wide in 2025 and never fully closed.</p>
-        <div class="note">This indexes <b>total demand volume</b> per skill type. Because the hard-skill list keeps expanding while soft is fixed, part of the hard gain is new entrants to the panel — the increase is partly composition, not only per-job depth.</div>
+        <div class="note">This indexes <b>total demand volume</b> per skill type. Because the hard-skill list keeps expanding while soft is fixed, part of the hard gain is new entrants to the panel.</div>
       </div>
     </div>
     <div class="legend rise d3">
@@ -346,18 +364,16 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
   </section>
 
   <!-- ░░ 6 · EDUCATION UNIVERSALITY (was 07) ░░ -->
-  <section class="slide" data-i="6">
-    <div class="eyebrow rise d1"><span class="num">06</span> Education <span class="rule"></span></div>
+  <section class="slide" data-i="7">
+    <div class="eyebrow rise d1"><span class="num">07</span> Education <span class="rule"></span></div>
     <h1 class="title rise d1">Soft skills are <span class="accent">near-universal</span> at every degree level; technical skills are not.</h1>
-    <p class="subtitle rise d2">Soft-skill demand sits between 85% and 91% from High School through PhD — a six-point band. Hard-skill demand swings twelve points (61% to 73%) and peaks at the Bachelor's level, then falls again at Master's and PhD.</p>
+    <p class="subtitle rise d2">While baseline soft skills are expected from every applicant regardless of education, the market's appetite for technical skills scales back significantly at the graduate level.</p>
     <div class="body rise d3">
       <div class="chart-stage"><canvas id="c7" class="chart"></canvas></div>
       <div class="readout glass">
         <span class="lead">Stable across the ladder</span>
-        <p>Soft-skill demand sits between 85% and 91% from High School through PhD — a six-point band. Hard-skill demand swings twelve points (61% to 73%) and peaks at the Bachelor's level, then falls again at Master's and PhD.</p>
-        <div class="divline"></div>
-        <p><b style="color:var(--ink)">Stable</b> — Four of the five degree levels stay in a narrow 6-point band across the entire window. Soft-skill demand doesn't move with the cycle.</p>
-        <p><b style="color:var(--ink)">The Bachelor's break</b> — Only the Bachelor's line diverges, and only in 2025. The level employers hire from most often saw the steepest soft-skill retreat.</p>
+        <p>The story is the contrast: soft-skill demand is a near-constant the whole way up the credential ladder, while hard-skill demand is uneven — and, counter-intuitively, peaks at the <b style="color:var(--ink)">Bachelor's</b> level rather than the PhD.</p>
+        <div class="note">For early talent the implication is clear: human-centric skills travel across every level, so they're the most portable thing to lead with.</div>
       </div>
     </div>
     <div class="legend rise d3">
@@ -369,10 +385,10 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
   </section>
 
   <!-- ░░ 7 · NEW: SOFT-SKILL SHARE OVER TIME BY EDUCATION LEVEL ░░ -->
-  <section class="slide" data-i="7">
-    <div class="eyebrow rise d1"><span class="num">07</span> Education Over Time <span class="rule"></span></div>
+  <section class="slide" data-i="8">
+    <div class="eyebrow rise d1"><span class="num">08</span> Education Over Time <span class="rule"></span></div>
     <h1 class="title rise d1">Soft-skill demand is <span class="accent">structural</span>, not cyclical — but the Bachelor's market just <span class="pop">cracked</span>.</h1>
-    <p class="subtitle rise d2">High School, Associate, Master's and PhD postings all hold between 86% and 92% across five years, while Bachelor's postings fall from ~91% to ~78% in early 2025 before partially recovering — a 13-point break in the country's most-hired credential.</p>
+    <p class="subtitle rise d2">High School, Associate, Master's and PhD postings all hold between 86% and 92% across five years, while Bachelor's postings fall from ~91% to ~78% in early 2025 before partially recovering.</p>
     <div class="body rise d3">
       <div class="chart-stage"><canvas id="c7b" class="chart"></canvas></div>
       <div class="readout glass">
@@ -380,7 +396,6 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
         <p><b style="color:var(--ink)">Stable</b> — Four of the five degree levels stay in a narrow 6-point band across the entire window. Soft-skill demand doesn't move with the cycle.</p>
         <div class="divline"></div>
         <p><b style="color:var(--ink)">The Bachelor's break</b> — Only the Bachelor's line diverges, and only in 2025. The level employers hire from most often saw the steepest soft-skill retreat.</p>
-        <div class="note">The PhD line wiggles because monthly PhD sample sizes are small — read the level, not the noise.</div>
       </div>
     </div>
     <div class="legend rise d3">
@@ -395,10 +410,10 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
   </section>
 
   <!-- ░░ 8 · PAY: PAIRING PREMIUM (was 08) ░░ -->
-  <section class="slide" data-i="8">
-    <div class="eyebrow rise d1"><span class="num">08</span> The Money <span class="rule"></span></div>
+  <section class="slide" data-i="9">
+    <div class="eyebrow rise d1"><span class="num">09</span> The Money <span class="rule"></span></div>
     <h1 class="title rise d1">The accessible soft-skill roles pay less — the premium is in the <span class="pop">pairing</span>.</h1>
-    <p class="subtitle rise d2">Behavioural skills elevate technical labour into recognised professionalism, unlocking a wage premium. This financial bump reflects the price the market pays for cultural legibility, rewarding the professional identity a worker signals rather than just their technical execution.</p>
+    <p class="subtitle rise d2">Behavioural skills elevate technical labour unlocking a wage premium. This financial bump reflects the price the market pays for cultural legibility, rewarding the professional identity a worker signals.</p>
     <div class="body rise d3">
       <div class="chart-stage"><canvas id="c8" class="chart"></canvas></div>
       <div class="readout glass">
@@ -416,26 +431,22 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
       <span><i style="background:var(--jade)"></i>Hard + Soft</span>
     </div>
     <div class="source">Source: <b>Job postings master dataset (Revelio Labs)</b> | Analysis restricted to postings with ≥1 tracked skill | Skills extracted via keyword matching (binary presence) | Salary outliers removed via IQR×1.5</div>
-    <div class="source-note">Mean & median by mutually-exclusive skill mix · IQR×1.5 outliers removed · n shown per group</div>
+    <div class="source-note">Mean salary by mutually-exclusive skill mix · IQR×1.5 outliers removed</div>
   </section>
 
   <!-- ░░ 9 · AI DEMAND BY FIELD ░░ -->
-  <section class="slide" data-i="9">
-    <div class="eyebrow rise d1"><span class="num">09</span> Where It's Coming From <span class="rule"></span></div>
+  <section class="slide" data-i="10">
+    <div class="eyebrow rise d1"><span class="num">10</span> Where It's Coming From <span class="rule"></span></div>
     <h1 class="title rise d1">AI-skill demand is rising in <span class="accent">every field</span> — Marketing leads the gain.</h1>
-    <p class="subtitle rise d2">AI skill requirements are rising across multiple industries, reflecting its growing role as a common workplace expectation. This shift is particularly notable in marketing, finance, and operations, which currently lead the steady increase.</p>
-    <div class="defchips rise d2">
-      <span class="chip">Measured as <b>share of a field's postings</b> — within-job proportion, not raw volume</span>
-      <span class="chip">Every field <b>increased</b>; none declined</span>
-    </div>
+    <p class="subtitle rise d2">AI skill requirements are rising across multiple industries, reflecting its growing role as a common workplace expectation. This shift is particularly notable in marketing, finance, and operations.</p>
     <div class="body rise d3">
       <div class="chart-stage"><canvas id="c9" class="chart"></canvas></div>
-      <div class="readout glass">
+      <div class="readout glass" style="gap:.55rem">
         <span class="lead">The broadening</span>
-        <div><div class="big" style="color:var(--aqua)">+2.1<small>pp</small></div><div class="k" style="font-size:.64rem;color:var(--ink-55);margin-top:.3rem">Marketing's gain — the largest of any field</div></div>
+        <div style="display:flex;align-items:baseline;gap:.55rem;flex-wrap:wrap;"><div class="big" style="color:var(--aqua);font-size:1.7rem">+2.1<small>pp</small></div><div class="k" style="font-size:.6rem;color:var(--ink-55)">Marketing's gain — largest of any field</div></div>
         <div class="divline"></div>
-        <p>Marketing postings asking for ≥1 AI-related skill rose +2.1 percentage points from 2021 to 2026 — the largest increase of any field. Finance (+1.3 pp) and Operations (+1.0 pp) follow; even Engineering (+0.6 pp) and Sales (+0.7 pp), the lowest movers, still moved. None declined.</p>
-        <div class="note">This answers <b>where the increase comes from</b>: it's broad-based across fields, measured as each field's own share of postings — so it reflects genuine spread, not the growing skill list alone.</div>
+        <p>Marketing postings asking for ≥1 AI-related skill rose +2.1 percentage points from 2021 to 2026 — the largest increase of any field. Finance (+1.3 pp) and Operations (+1.0 pp) follow; even Engineering (+0.6 pp) and Sales (+0.7 pp), the lowest movers.</p>
+        <div class="note">This answers <b>where the increase comes from</b>: it's broad-based across fields reflecting genuine spread, not just a growing skill list alone.</div>
       </div>
     </div>
     <div class="legend rise d3">
@@ -443,12 +454,12 @@ h1.title{font-size:clamp(1.45rem,calc(3.1vmin + .55vw),2.5rem);}
       <span><i style="background:linear-gradient(90deg,var(--turq),var(--lime))"></i>Marketing — largest gain (highlighted)</span>
     </div>
     <div class="source">Source: <b>Job postings master dataset (Revelio Labs)</b> | Analysis restricted to postings with ≥1 tracked skill | Skills extracted via keyword matching (binary presence) | Salary outliers removed via IQR×1.5</div>
-    <div class="source-note">Change in share of each field's postings requesting ≥1 AI-related skill · 2021-01–2021-08 → 2025-09–2026-04 · largest gain: Marketing (+2.1 pp)</div>
+    <div class="source-note">Within-job proportion — each field's own share of postings, not raw volume · Change 2021-01–2021-08 → 2025-09–2026-04 · largest gain: Marketing (+2.1 pp)</div>
   </section>
 
   <!-- ░░ 10 · TAKEAWAYS ░░ -->
-  <section class="slide" data-i="10">
-    <div class="eyebrow rise d1"><span class="num">10</span> What It Means <span class="rule"></span></div>
+  <section class="slide" data-i="11">
+    <div class="eyebrow rise d1"><span class="num">11</span> What It Means <span class="rule"></span></div>
     <h1 class="title rise d1">Widening the aperture: <span class="pop">human-centric skills</span> are the early-career on-ramp.</h1>
     <p class="subtitle rise d2">Four insights from 19.9M postings — each one a lever for the next generation of talent.</p>
     <div class="body rise d3" style="display:block;">
@@ -547,6 +558,8 @@ function chart2(){const cv=document.getElementById('c2');let cancel;const bars=[
 
 function _unused_chart2(){}
 
+function chartCo(){const cv=document.getElementById('cCo');let cancel;const data=[['NLP',83],['DATA ANALYSIS',82],['SALESFORCE',77],['MACHINE LEARNING',77],['AI',75],['MS OFFICE',73],['DEEP LEARNING',71],['EXCEL',70],['PYTORCH',69],['POWER BI',65],['TABLEAU',60],['SAP',33]];return function(){if(cancel)cancel();const{ctx,W,H}=ctxOf(cv);const heroW=Math.max(W*0.30,250);const padL=heroW+46,padR=18,padT=24,padB=74,n=data.length;const plotW=W-padL-padR,plotH=H-padT-padB,colStep=plotW/n,colW=Math.min(colStep*0.56,40);const yp=v=>padT+plotH-(v/100)*plotH;function grid(){ctx.clearRect(0,0,W,H);for(let v=0;v<=100;v+=25){const y=yp(v);ctx.strokeStyle=v===50?'rgba(34,64,77,.22)':C.grid;ctx.lineWidth=1;if(v===50)ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(padL+plotW,y);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='right';ctx.fillText(v+'%',padL-6,y+3);}}cancel=tween(1600,p=>{grid();/* HERO punchline (left) */const hx=6,hcy=padT+plotH*0.40;const num=(66.9*Math.min(p*1.25,1));const grd=ctx.createLinearGradient(hx,hcy-60,hx+heroW*0.9,hcy+10);grd.addColorStop(0,C.turq);grd.addColorStop(1,C.lime);ctx.fillStyle=grd;ctx.textAlign='left';const big=Math.round(Math.min(H*0.13,heroW*0.34));ctx.font='800 '+big+'px '+FONT;ctx.fillText(num.toFixed(1)+'%',hx,hcy);ctx.fillStyle=C.ink;ctx.font='600 13px '+FONT;ctx.fillText('of technical roles also',hx,hcy+26);ctx.fillText('ask for a soft skill',hx,hcy+44);ctx.fillStyle=C.tick;ctx.font='italic 500 11px '+FONT;ctx.fillText('Only 33.1% are hard-skill-only',hx,hcy+70);const tW=Math.min(heroW-hx-30,230),tY=hcy+84,tH=11;ctx.fillStyle=C.sky;ctx.globalAlpha=0.5;ctx.beginPath();ctx.roundRect(hx,tY,tW,tH,5.5);ctx.fill();ctx.globalAlpha=1;ctx.fillStyle=C.jade;ctx.beginPath();ctx.roundRect(hx,tY,tW*0.669*p,tH,5.5);ctx.fill();/* COLUMNS (right) */data.forEach((d,i)=>{const cx=padL+i*colStep+colStep/2,x=cx-colW/2,base=padT+plotH;const softH=(d[1]/100)*plotH*p,topY=base-softH;ctx.fillStyle=C.sky;ctx.globalAlpha=0.5;ctx.beginPath();ctx.roundRect(x,padT,colW,plotH,[7,7,0,0]);ctx.fill();ctx.globalAlpha=1;const g=ctx.createLinearGradient(0,topY,0,base);g.addColorStop(0,'#5BBE8A');g.addColorStop(1,C.jade);ctx.fillStyle=g;ctx.beginPath();ctx.roundRect(x,topY,colW,softH,[7,7,0,0]);ctx.fill();if(p>0.82){ctx.globalAlpha=(p-0.82)/0.18;ctx.fillStyle='#fff';ctx.font='700 10.5px '+FONT;ctx.textAlign='center';ctx.fillText(d[1]+'%',cx,topY+15);ctx.globalAlpha=1;}ctx.save();ctx.translate(cx+3,base+12);ctx.rotate(-Math.PI/4.2);ctx.fillStyle=C.ink;ctx.font='600 9px '+FONT;ctx.textAlign='right';ctx.fillText(d[0],0,0);ctx.restore();});});};}
+
 function chart3(){const cv=document.getElementById('c3');let cancel;/* Soft grouped at top (by overall frequency), then Hard (by overall frequency). value = senior_share - 50 (so >0 = senior-leaning, <0 = entry-leaning). */const data=[/* SOFT (top) */['COMMUNICATION',-10,0],['LEADERSHIP',-3,0],['COLLABORATION',2,0],['PROBLEM SOLVING',-5,0],['INTERPERSONAL',-10,0],['TEAMWORK',-14,0],['ADAPTABILITY',-11,0],['CRITICAL THINKING',8,0],['EMOTIONAL INTELLIGENCE',-3,0],/* divider goes here */['EXCEL',-8,1],['MS OFFICE',-7,1],['SAP',3,1],['DATA ANALYSIS',21,1],['SALESFORCE',11,1],['AI',-1,1],['TABLEAU',15,1],['MACHINE LEARNING',30,1],['POWER BI',26,1],['DEEP LEARNING',30,1],['TENSORFLOW',35,1],['PYTORCH',34,1],['NLP',33,1]];const dividerAfter=8;/* index of last soft skill */const colOf=d=>d[2]?C.aqua:C.lime;return function(){if(cancel)cancel();const{ctx,W,H}=ctxOf(cv);/* Wider gutter (gx) reserved on the left for vertical SOFT/HARD group titles, then row-label column */const gx=22;const padL=gx+158,padR=70,padT=8,padB=32,n=data.length,absMax=45;const plotW=W-padL-padR,plotH=H-padT-padB,rowH=plotH/n,mid=padL+plotW/2;const xs=v=>padL+(v+absMax)/(absMax*2)*plotW;function grid(){ctx.clearRect(0,0,W,H);/* axis ticks */[-40,-20,0,20,40].forEach(v=>{const x=xs(v);ctx.strokeStyle=v===0?'rgba(34,64,77,.3)':C.grid;ctx.lineWidth=v===0?1.5:1;ctx.beginPath();ctx.moveTo(x,padT);ctx.lineTo(x,padT+plotH);ctx.stroke();ctx.fillStyle=C.tick;ctx.font='11px '+FONT;ctx.textAlign='center';ctx.fillText((v>0?'+':'')+v+'pp',x,padT+plotH+14);});/* axis title */ctx.fillStyle=C.tick;ctx.font='italic 10px '+FONT;ctx.textAlign='center';ctx.fillText('← more entry-level    ·    more senior →',mid,padT+plotH+28);/* divider line between soft and hard groups */const dy=padT+(dividerAfter+1)*rowH;ctx.strokeStyle='rgba(34,64,77,.18)';ctx.setLineDash([4,4]);ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(0,dy);ctx.lineTo(padL+plotW,dy);ctx.stroke();ctx.setLineDash([]);/* vertical SOFT / HARD group titles in left gutter */const softMidY=padT+((dividerAfter+1)*rowH)/2;const hardMidY=padT+((dividerAfter+1)*rowH)+((n-dividerAfter-1)*rowH)/2;ctx.save();ctx.translate(gx*0.55,softMidY);ctx.rotate(-Math.PI/2);ctx.fillStyle=C.lime;ctx.font='800 11px '+FONT;ctx.textAlign='center';ctx.fillText('SOFT SKILLS',0,4);ctx.restore();ctx.save();ctx.translate(gx*0.55,hardMidY);ctx.rotate(-Math.PI/2);ctx.fillStyle=C.aqua;ctx.font='800 11px '+FONT;ctx.textAlign='center';ctx.fillText('HARD SKILLS',0,4);ctx.restore();/* row labels (right-aligned) */ctx.font='600 10.5px '+FONT;ctx.textAlign='right';data.forEach((d,i)=>{ctx.fillStyle=colOf(d);ctx.fillText(d[0],padL-10,padT+i*rowH+rowH/2+4);});}cancel=tween(1300,p=>{grid();data.forEach((d,i)=>{const x0=mid,x1=lerp(x0,xs(d[1]),p),y=padT+i*rowH+rowH*0.22,bh=rowH*0.56;ctx.fillStyle=colOf(d);ctx.beginPath();if(d[1]>=0)ctx.roundRect(x0,y,Math.max(x1-x0,0),bh,3);else ctx.roundRect(x1,y,Math.max(x0-x1,0),bh,3);ctx.fill();if(p>0.85){ctx.globalAlpha=(p-0.85)/0.15;ctx.fillStyle=C.ink;ctx.font='700 10px '+FONT;const senior=d[1]+50;const lbl=d[1]>=0?(senior+'% sr'):((100-senior)+'% en');ctx.textAlign=d[1]>=0?'left':'right';ctx.fillText(lbl,d[1]>=0?x1+5:x1-5,y+bh/2+3);ctx.globalAlpha=1;}});});};}
 
 function chart4(){const cv=document.getElementById('c4');let cancel;const entry=[55,58,88,128,168,155,138,152,178,208,200,202,208,222,246,234,252,242,258,243,242,242,232,220,238,265,310,360,420,465,475,478,489,468,381,396,452,313].map(v=>v*1000);const senior=[39,41,52,75,100,98,90,98,113,160,150,150,160,178,193,183,197,191,200,182,180,178,176,170,165,176,202,232,300,360,400,422,440,425,330,322,350,245].map(v=>v*1000);return function(){if(cancel)cancel();const{ctx,W,H}=ctxOf(cv);const padL=58,padR=14,padT=14,padB=24;const plotW=W-padL-padR,plotH=H-padT-padB,nP=entry.length,maxV=500000;const xp=i=>padL+(i/(nP-1))*plotW,yp=v=>padT+plotH-(v/maxV)*plotH;function path(vals){const pa=new Path2D();vals.forEach((v,i)=>{const x=xp(i),y=yp(v);if(i===0)pa.moveTo(x,y);else{const cx=(xp(i-1)+x)/2;pa.bezierCurveTo(cx,yp(vals[i-1]),cx,y,x,y);}});return pa;}function grid(){ctx.clearRect(0,0,W,H);for(let v=0;v<=500000;v+=100000){const y=yp(v);ctx.strokeStyle=C.grid;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(padL+plotW,y);ctx.stroke();ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='right';ctx.fillText((v/1000)+'K',padL-6,y+3);}['2021','2022','2025','2026'].forEach((lb,k)=>{const i=[0,12,25,35][k];ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='center';ctx.fillText(lb,xp(i),H-6);});}cancel=tween(1900,p=>{grid();const clipW=plotW*p;ctx.save();ctx.beginPath();ctx.rect(padL,0,clipW,H);ctx.clip();[[senior,C.blue,'rgba(40,95,116,.12)',true],[entry,C.aqua,'rgba(0,192,202,.16)',false]].forEach(([vals,col,fc])=>{const pa=path(vals);const fp=new Path2D(pa);fp.lineTo(xp(nP-1),padT+plotH);fp.lineTo(xp(0),padT+plotH);fp.closePath();ctx.fillStyle=fc;ctx.fill(fp);ctx.strokeStyle=col;ctx.lineWidth=3;ctx.lineJoin='round';ctx.stroke(pa);});ctx.restore();});};}
@@ -573,13 +586,13 @@ function chart8(){const cv=document.getElementById('c8');let cancel;const data=[
 
 function chart9(){const cv=document.getElementById('c9');let cancel;const data=[['Marketing',2.1],['Finance',1.3],['Operations',1.0],['Admin',0.9],['Scientist',0.9],['Sales',0.7],['Engineer',0.6]];return function(){if(cancel)cancel();const{ctx,W,H}=ctxOf(cv);const padL=118,padR=70,padT=12,padB=28,n=data.length;const plotW=W-padL-padR,plotH=H-padT-padB,rowH=plotH/n,xMax=2.6;const xs=v=>padL+(v/xMax)*plotW;function grid(){ctx.clearRect(0,0,W,H);for(let v=0;v<=2.5;v+=0.5){const x=xs(v);ctx.strokeStyle=C.grid;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,padT);ctx.lineTo(x,padT+plotH);ctx.stroke();ctx.fillStyle=C.tick;ctx.font='10px '+FONT;ctx.textAlign='center';ctx.fillText('+'+v.toFixed(1),x,padT+plotH+16);}ctx.fillStyle=C.tick;ctx.font='italic 10px '+FONT;ctx.textAlign='center';ctx.fillText('Change in AI-skill demand (percentage points), 2021 → 2026',padL+plotW/2,H-2);ctx.fillStyle=C.ink;ctx.font='600 12px '+FONT;ctx.textAlign='right';data.forEach((d,i)=>ctx.fillText(d[0],padL-10,padT+i*rowH+rowH/2+4));}cancel=tween(1200,p=>{grid();data.forEach((d,i)=>{const x0=xs(0),x1=lerp(x0,xs(d[1]),p),y=padT+i*rowH+rowH*0.2,bh=rowH*0.6;const fill=d[0]==='Marketing' && x1>x0 ? (()=>{const g=ctx.createLinearGradient(x0,y,x1,y);/* soft gradient: aqua → pale lime with mid-tone */g.addColorStop(0,'rgba(0,192,202,.85)');g.addColorStop(0.55,'rgba(70,177,123,.80)');g.addColorStop(1,'rgba(143,196,64,.75)');return g;})() : C.aqua;ctx.fillStyle=fill;ctx.beginPath();ctx.roundRect(x0,y,Math.max(x1-x0,0),bh,4);ctx.fill();if(p>0.85){ctx.globalAlpha=(p-0.85)/0.15;ctx.fillStyle=C.ink;ctx.font='700 12px '+FONT;ctx.textAlign='left';ctx.fillText('+'+d[1].toFixed(1)+' pp',x1+8,y+bh/2+4);ctx.globalAlpha=1;}});});};}
 
-const PLAYS={1:chart2(),2:chart3(),3:chart4(),4:chart5(),5:chart6(),6:chart7(),7:chart7b(),8:chart8(),9:chart9()};
+const PLAYS={1:chart2(),2:chartCo(),3:chart3(),4:chart4(),5:chart5(),6:chart6(),7:chart7(),8:chart7b(),9:chart8(),10:chart9()};
 const slides=[...document.querySelectorAll('.slide')];
 const N=slides.length;let cur=0,playing=true,timer=null;const DUR=8200;
 const dotsBox=document.getElementById('dots');
 slides.forEach((_,k)=>{const d=document.createElement('div');d.className='dot'+(k===0?' on':'');d.onclick=()=>{showSlide(k);resetTimer();};dotsBox.appendChild(d);});
 const dots=[...document.querySelectorAll('.dot')];
-function showSlide(n){const prev=cur;cur=(n+N)%N;if(prev===cur&&prev!==0)return;slides[prev].classList.remove('active');slides[cur].classList.add('active');dots.forEach((d,k)=>d.classList.toggle('on',k===cur));document.getElementById('progbar').style.width=((cur/(N-1))*100)+'%';document.getElementById('pagenum').textContent=String(cur+1).padStart(2,'0')+' / '+String(N).padStart(2,'0');document.getElementById('topbar').style.display=(cur===0)?'none':'flex';document.querySelectorAll('.callout').forEach(c=>c.classList.remove('show'));if(cur===4)setTimeout(()=>document.getElementById('call5')?.classList.add('show'),1300);if(cur===5)setTimeout(()=>document.getElementById('call6')?.classList.add('show'),1300);if(PLAYS[cur])setTimeout(()=>PLAYS[cur](),200);}
+function showSlide(n){const prev=cur;cur=(n+N)%N;if(prev===cur&&prev!==0)return;slides[prev].classList.remove('active');slides[cur].classList.add('active');dots.forEach((d,k)=>d.classList.toggle('on',k===cur));document.getElementById('progbar').style.width=((cur/(N-1))*100)+'%';document.getElementById('pagenum').textContent=String(cur+1).padStart(2,'0')+' / '+String(N).padStart(2,'0');document.getElementById('topbar').style.display=(cur===0)?'none':'flex';document.querySelectorAll('.callout').forEach(c=>c.classList.remove('show'));if(cur===5)setTimeout(()=>document.getElementById('call5')?.classList.add('show'),1300);if(cur===6)setTimeout(()=>document.getElementById('call6')?.classList.add('show'),1300);if(PLAYS[cur])setTimeout(()=>PLAYS[cur](),200);}
 function next(){showSlide(cur+1);resetTimer();}
 function prev(){showSlide(cur-1);resetTimer();}
 function resetTimer(){clearTimeout(timer);if(!playing)return;timer=setTimeout(()=>{if(cur<N-1)next();else{playing=false;document.getElementById('playbtn').textContent='▶ Play';}},DUR);}
