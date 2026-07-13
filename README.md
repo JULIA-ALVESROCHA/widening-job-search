@@ -105,7 +105,7 @@ This work was developed through collaboration between:
 - Nathaly Zamarripa
 - Neil Sekhri
 
-**Supervisors**
+## Supervisors
 
 - Howard Leong
 - Emmalyn Green
